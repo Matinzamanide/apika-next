@@ -3,16 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-// یک نوع سفارش ساده برای مطابقت با ساختار داده از API
 interface Order {
     id: number;
     customer_name: string;
     order_date: string;
     status: string;
-    // فیلدهای دیگر از داده‌های سفارش شما را در صورت نیاز اضافه کنید
 }
 
-// کامپوننت آیتم سفارش
 const OrderItem: React.FC<{ order: Order }> = ({ order }) => (
     <div className="flex justify-between items-center bg-gray-100 p-4 rounded-lg mb-2">
         <div className="flex-1">
@@ -36,14 +33,12 @@ const DashboardPage = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                // واکشی از مسیر API Next.js که درخواست و کوکی‌ها را به بک‌اند PHP ارسال می‌کند
                 const res = await fetch('/api/orders/get', {
                     method: 'GET',
                     headers: { 'Content-Type': 'application/json' },
                 });
 
                 if (!res.ok) {
-                    // اگر پاسخ OK نباشد، به احتمال زیاد سشن نامعتبر است
                     router.push('/admin/login');
                     return;
                 }
@@ -61,7 +56,6 @@ const DashboardPage = () => {
         fetchOrders();
     }, [router]);
 
-    // مدیریت وضعیت‌های بارگیری و خطا برای تجربه کاربری بهتر
     if (loading) {
         return <div className="p-6 text-center">در حال بارگیری سفارشات...</div>;
     }
@@ -70,7 +64,6 @@ const DashboardPage = () => {
         return <div className="p-6 text-center text-red-600">{error}</div>;
     }
 
-    // دکمه خروج یک ایده خوب برای داشبورد است
     const handleLogout = async () => {
         await fetch('/api/admin/logout', { method: 'POST' });
         router.push('/admin/login');
