@@ -2,16 +2,20 @@ import ProductCard from "@/components/ProductCard/ProductCard";
 import ProductFilters from "@/components/ProductFilters/ProductFilters";
 import { IProduct } from "@/Types/Types";
 
+// ۱. اصلاح تایپ برای سازگاری با نسخه ۱۵
 interface SetControlProps {
-  searchParams: {
+  searchParams: Promise<{
     brand?: string;
     sort?: string;
-  };
+  }>;
 }
 
 const FIXED_BRANDS = ["موتوژن"];
 
-const Cooler = async ({ searchParams }: SetControlProps) => {
+const Cooler = async (props: SetControlProps) => {
+  // ۲. باید searchParams را await کنید
+  const searchParams = await props.searchParams;
+  
   const selectedBrand = searchParams.brand || "all";
   const sortOrder = searchParams.sort || "default";
 
