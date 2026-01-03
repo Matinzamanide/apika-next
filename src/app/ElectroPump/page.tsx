@@ -3,15 +3,16 @@ import ProductFilters from "@/components/ProductFilters/ProductFilters";
 import { IProduct } from "@/Types/Types";
 
 interface ExpansionSourceProps {
-  searchParams: {
+  searchParams: Promise<{
     brand?: string;
     sort?: string;
-  };
+  }>;
 }
 
 const FIXED_BRANDS = ["توان تک", "رایان"];
 
-const ElectroPump = async ({ searchParams }: ExpansionSourceProps) => {
+const ElectroPump = async (props: ExpansionSourceProps) => {
+  const searchParams = await props.searchParams;
   const selectedBrand = searchParams.brand || "all";
   const sortOrder = searchParams.sort || "default";
 
@@ -57,7 +58,7 @@ const ElectroPump = async ({ searchParams }: ExpansionSourceProps) => {
   return (
     <div className="max-w-[95%] mx-auto py-10 px-4 sm:px-6 lg:px-8" dir="rtl">
       <h2 className="text-3xl font-extrabold text-gray-800 text-center mb-8">
-      الکتروپمپ
+        الکتروپمپ
       </h2>
 
       <div className="flex flex-col md:grid md:grid-cols-4 md:gap-6">

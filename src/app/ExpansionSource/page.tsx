@@ -185,13 +185,14 @@ import ProductFilters from "@/components/ProductFilters/ProductFilters";
 import { IProduct } from "@/Types/Types";
 
 interface ExpansionSourceProps {
-  searchParams: {
+  searchParams: Promise<{
     brand?: string;
     sort?: string;
-  };
+  }>;
 }
 
-const ExpansionSource = async ({ searchParams }: ExpansionSourceProps) => {
+const ExpansionSource = async (props: ExpansionSourceProps) => {
+  const searchParams = await props.searchParams;
   const selectedBrand = searchParams.brand || "all";
   const sortOrder = searchParams.sort || "default";
 
@@ -216,24 +217,20 @@ const ExpansionSource = async ({ searchParams }: ExpansionSourceProps) => {
     );
   }
 
-  // ✅ فیلتر محصولات دوزینگ پمپ
   let filteredByCategory = allProducts.filter((product) =>
     product.categories?.some((cat) => cat.includes("منبع انبساط"))
   );
 
-  // ✅ استخراج برندهای منحصر به فرد از محصولات فیلتر شده
   const availableBrands = Array.from(
     new Set(filteredByCategory.map((product) => product.brand))
   ).filter((brand): brand is string => Boolean(brand));
 
-  // ✅ فیلتر بر اساس برند انتخابی
   if (selectedBrand !== "all") {
     filteredByCategory = filteredByCategory.filter(
       (product) => product.brand === selectedBrand
     );
   }
 
-  // ✅ مرتب‌سازی
   if (sortOrder === "cheapest") {
     filteredByCategory.sort((a, b) => Number(a.price) - Number(b.price));
   } else if (sortOrder === "most_expensive") {
@@ -243,7 +240,7 @@ const ExpansionSource = async ({ searchParams }: ExpansionSourceProps) => {
   return (
     <div className="max-w-[95%] mx-auto py-10 px-4 sm:px-6 lg:px-8" dir="rtl">
       <h2 className="text-3xl font-extrabold text-gray-800 text-center mb-8">
-         منبع انبساط
+        منبع انبساط
       </h2>
 
       <div className="flex flex-col md:grid md:grid-cols-4 md:gap-6">

@@ -2,14 +2,19 @@ import ProductCard from "@/components/ProductCard/ProductCard";
 import ProductFilters from "@/components/ProductFilters/ProductFilters";
 import { IProduct } from "@/Types/Types";
 
+// ۱. اصلاح اینترفیس: در Next.js 15 مقدار searchParams یک Promise است
 interface ExpansionSourceProps {
-  searchParams: {
+  searchParams: Promise<{
     brand?: string;
     sort?: string;
-  };
+  }>;
 }
 
-const ExpansionSource = async ({ searchParams }: ExpansionSourceProps) => {
+// تغییر نام کامپوننت متناسب با فایل یا استفاده از نام قبلی
+const ExpansionSource = async (props: ExpansionSourceProps) => {
+  // ۲. باید await کنید تا مقادیر از حالت Promise خارج شوند
+  const searchParams = await props.searchParams;
+  
   const selectedBrand = searchParams.brand || "all";
   const sortOrder = searchParams.sort || "default";
 
@@ -39,7 +44,7 @@ const ExpansionSource = async ({ searchParams }: ExpansionSourceProps) => {
     product.categories?.some((cat) => cat.includes("دوزینگ پمپ"))
   );
 
-  // ✅ استخراج برندهای منحصر به فرد از محصولات فیلتر شده
+  // ✅ استخراج برندهای منحصر به فرد (Dynamic Brands)
   const availableBrands = Array.from(
     new Set(filteredByCategory.map((product) => product.brand))
   ).filter((brand): brand is string => Boolean(brand));
