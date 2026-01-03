@@ -149,16 +149,16 @@ import { Download, CheckCircle, Package, Tag } from 'lucide-react';
 import TabComponent from '@/components/TabCom/TabComponent';
 import Gallery from '@/components/Gallery/Gallery';
 import QuantitySelector from '@/components/QuantitySelector/QuantitySelector';
-// import { Toaster } from 'react-hot-toast';
 import Link from 'next/link';
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
 import SimilarProducts from '@/components/SimilarProducts/SimilarProducts';
 
 interface IProps {
-  params: { id: string }; 
+  params: Promise<{ id: string }>;
 }
 
-const DataLightPage = async ({ params }: IProps) => {
+const DataLightPage = async (props: IProps) => {
+  const params = await props.params;
   const { id } = params;
 
   let data = null;
@@ -198,7 +198,7 @@ const DataLightPage = async ({ params }: IProps) => {
   const formatPrice = (price: number) => {
     return price.toLocaleString('fa-IR') + ' تومان';
   };
-  console.log(data.categories[0])
+
   return (
     <div className="bg-gradient-to-br from-gray-50 via-blue-50 to-white min-h-screen text-gray-800 py-12 px-4 sm:px-6 lg:px-8">
       <Breadcrumb productName={data.title} category={data.categories[0]} link='HouseholdPump' />
@@ -320,7 +320,6 @@ const DataLightPage = async ({ params }: IProps) => {
 };
 
 export default DataLightPage;
-
 
 
 // import { Download, CheckCircle, Package, Tag, ShieldCheck, Truck, ArrowRight } from 'lucide-react';

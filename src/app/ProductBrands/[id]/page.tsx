@@ -2,20 +2,20 @@ import ProductCard from "@/components/ProductCard/ProductCard";
 import { IProduct } from "@/Types/Types";
 
 interface IProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
-const ProductBrands = async ({ params }: IProps) => {
+const ProductBrands = async (props: IProps) => {
+  const params = await props.params;
   const { id } = params;
-  console.log(id);
 
-  // ✅ دیکد کردن id
   const decodedId = decodeURIComponent(id);
 
-  const res = await fetch("https://apika.ir/apitak/get_products.php");
+  const res = await fetch("https://apika.ir/apitak/get_products.php", {
+    cache: "no-store",
+  });
   const data = (await res.json()) as IProduct[];
 
-  // ✅ فیلتر با نام دیکد شده
   const filteredByBrand = data.filter((product) =>
     product.brand.includes(decodedId)
   );
