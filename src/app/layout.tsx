@@ -7,8 +7,8 @@ import { Metadata } from "next"; // وارد کردن تایپ Metadata
 
 // ✅ اضافه کردن متادیتا
 export const metadata: Metadata = {
-  title: "نام فروشگاه شما | خرید انواع پمپ و لوازم صنعتی",
-  description: "بهترین قیمت خرید انواع پمپ‌های خانگی و صنعتی با ضمانت کیفیت در اپیکا.",
+  title: " آپیکا | خرید انواع پمپ و لوازم صنعتی",
+  description: "بهترین قیمت خرید انواع پمپ‌های خانگی و صنعتی با ضمانت کیفیت در آپیکا.",
   icons: {
     icon: "https://apika.ir/images/apika2.svg", // مسیر لوگوی کوچک سایت
   },
