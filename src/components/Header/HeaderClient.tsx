@@ -206,7 +206,7 @@ export default function Header() {
                 </Link>
               ) : (
                 <Link
-                href="/sign_in"
+                href="/Sign_in&up"
                   className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white px-5 py-2.5 rounded-xl shadow-lg hover:shadow-indigo-500/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm border border-indigo-400/30 font-medium"
                 >
                   ورود | ثبت نام
@@ -303,7 +303,7 @@ export default function Header() {
             </Link>
           ) : (
             <Link
-            href="/sign_in"
+            href="/Sign_in&up"
               onClick={() => setSidebarOpen(false)}
               className="block text-center p-4 mt-6 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white rounded-2xl shadow-lg hover:shadow-indigo-500/40 transform hover:scale-105 transition-all duration-300 backdrop-blur-sm border border-indigo-400/30 font-medium"
             >

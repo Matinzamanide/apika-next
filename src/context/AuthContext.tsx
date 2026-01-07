@@ -33,7 +33,6 @@ const AuthContextProvider: React.FC<IChildren> = ({ children }) => {
   const [name, setName] = useState<string>("");
   const [family, setFamily] = useState<string>("");
 
-  // بارگذاری اطلاعات از localStorage
   useEffect(() => {
     const storedLoggedIn = localStorage.getItem("isLoggedIn");
     const storedPhoneNumber = localStorage.getItem("phoneNumber");
