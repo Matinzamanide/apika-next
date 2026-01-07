@@ -21,7 +21,7 @@ const Cooler = async (props: SetControlProps) => {
 
   let allProducts: IProduct[] = [];
   try {
-    const res = await fetch("http://apika.ir/apitak/get_products.php", {
+    const res = await fetch("http://apitak.ir/apitak/get_products.php", {
       cache: "no-store",
     });
     allProducts = (await res.json()) as IProduct[];

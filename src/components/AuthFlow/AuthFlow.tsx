@@ -47,7 +47,7 @@ const AuthFlow = () => {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("https://apika.ir/apitak/auth/send_otp.php", {
+      const res = await fetch("https://apitak.ir/apitak/auth/send_otp.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({ phone }),
@@ -71,7 +71,7 @@ const AuthFlow = () => {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("https://apika.ir/apitak/auth/verify_otp.php", {
+      const res = await fetch("https://apitak.ir/apitak/auth/verify_otp.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({ phone, code: otp }),
@@ -97,7 +97,7 @@ const AuthFlow = () => {
     if (!name || !family) { setError("لطفاً اطلاعات را کامل کنید."); return; }
     setLoading(true);
     try {
-      const res = await fetch("https://apika.ir/apitak/auth/register_user.php", {
+      const res = await fetch("https://apitak.ir/apitak/auth/register_user.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({ phone, name, family }),

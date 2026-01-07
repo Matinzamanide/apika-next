@@ -520,10 +520,8 @@ const ProductCard = ({
             : 'grayscale opacity-70 cursor-not-allowed'
         }`}>
           
-          {/* بخش تصویر با افکت عمق */}
           <div className="relative h-64 w-full rounded-[2rem] bg-slate-50 overflow-hidden flex items-center justify-center transition-colors duration-500 group-hover:bg-blue-50/50">
             
-            {/* بدج‌های گوشه */}
             <div className="absolute top-4 right-4 z-20 flex flex-col gap-2">
                {discountPercentage && (
                 <span className="bg-red-500 text-white text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg shadow-red-200">
@@ -544,7 +542,6 @@ const ProductCard = ({
               className="object-contain p-8 transition-all duration-1000 ease-out group-hover:scale-110 group-hover:rotate-2"
             />
 
-            {/* لایه Glassmorphism دکمه سریع (فقط در هوور) */}
             <AnimatePresence>
               {hovered && isAvailable && (
                 <motion.div 
@@ -562,7 +559,6 @@ const ProductCard = ({
             </AnimatePresence>
           </div>
 
-          {/* محتوای متنی */}
           <div className="mt-6 px-2 pb-2 text-right" dir="rtl">
             <div className="flex justify-between items-start mb-2">
                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Premium Equipment</span>
@@ -591,13 +587,11 @@ const ProductCard = ({
                 </div>
               </div>
 
-              {/* دکمه دایره‌ای با فلش */}
               <div className="w-12 h-12 rounded-full border border-slate-100 flex items-center justify-center group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white transition-all duration-500 shadow-sm">
                 <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
               </div>
             </div>
 
-            {/* وضعیت موجودی ظریف */}
             <div className="mt-4 pt-4 border-t border-slate-50 flex items-center gap-2">
                <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${isAvailable ? 'bg-emerald-500' : 'bg-slate-300'}`} />
                <span className="text-[10px] font-bold text-slate-400">

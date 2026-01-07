@@ -11,7 +11,7 @@ const ProductBrands = async (props: IProps) => {
 
   const decodedId = decodeURIComponent(id);
 
-  const res = await fetch("https://apika.ir/apitak/get_products.php", {
+  const res = await fetch("https://apitak.ir/apitak/get_products.php", {
     cache: "no-store",
   });
   const data = (await res.json()) as IProduct[];

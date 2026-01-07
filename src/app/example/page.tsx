@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import LoadingApika from "../loading";
 const Example = () => {
     useEffect(()=>{ 
-        axios.get("https://apika.ir/apitak/get_products.php")
+        axios.get("https://apitak.ir/apitak/get_products.php")
 .then(res=>{
             console.log(res.data);
         })

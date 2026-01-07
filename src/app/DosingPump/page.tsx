@@ -2,7 +2,6 @@ import ProductCard from "@/components/ProductCard/ProductCard";
 import ProductFilters from "@/components/ProductFilters/ProductFilters";
 import { IProduct } from "@/Types/Types";
 
-// ۱. اصلاح اینترفیس: در Next.js 15 مقدار searchParams یک Promise است
 interface ExpansionSourceProps {
   searchParams: Promise<{
     brand?: string;
@@ -10,9 +9,7 @@ interface ExpansionSourceProps {
   }>;
 }
 
-// تغییر نام کامپوننت متناسب با فایل یا استفاده از نام قبلی
 const ExpansionSource = async (props: ExpansionSourceProps) => {
-  // ۲. باید await کنید تا مقادیر از حالت Promise خارج شوند
   const searchParams = await props.searchParams;
   
   const selectedBrand = searchParams.brand || "all";
@@ -20,7 +17,7 @@ const ExpansionSource = async (props: ExpansionSourceProps) => {
 
   let allProducts: IProduct[] = [];
   try {
-    const res = await fetch("https://apika.ir/apitak/get_products.php", {
+    const res = await fetch("https://apitak.ir/apitak/get_products.php", {
       cache: "no-store",
     });
     allProducts = (await res.json()) as IProduct[];
@@ -39,24 +36,20 @@ const ExpansionSource = async (props: ExpansionSourceProps) => {
     );
   }
 
-  // ✅ فیلتر محصولات دوزینگ پمپ
   let filteredByCategory = allProducts.filter((product) =>
     product.categories?.some((cat) => cat.includes("دوزینگ پمپ"))
   );
 
-  // ✅ استخراج برندهای منحصر به فرد (Dynamic Brands)
   const availableBrands = Array.from(
     new Set(filteredByCategory.map((product) => product.brand))
   ).filter((brand): brand is string => Boolean(brand));
 
-  // ✅ فیلتر بر اساس برند انتخابی
   if (selectedBrand !== "all") {
     filteredByCategory = filteredByCategory.filter(
       (product) => product.brand === selectedBrand
     );
   }
 
-  // ✅ مرتب‌سازی
   if (sortOrder === "cheapest") {
     filteredByCategory.sort((a, b) => Number(a.price) - Number(b.price));
   } else if (sortOrder === "most_expensive") {

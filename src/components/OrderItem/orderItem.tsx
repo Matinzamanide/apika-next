@@ -75,7 +75,7 @@ const OrderItem: React.FC<IOrderItem> = ({ id, qty }) => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`https://apika.ir/apitak/get_products.php?id=${id}`);
+        const res = await fetch(`https://apitak.ir/apitak/get_products.php?id=${id}`);
         const result = await res.json();
         setData(result);
       } catch (error) {

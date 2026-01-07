@@ -7,7 +7,6 @@ import { useShoppingCartContext } from "@/context/ShoppingCartContext";
 import { MapPin, Phone, Truck, CheckCircle, Loader2, Hash, Navigation } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// وارد کردن مستقیم فایل JSON خودمان
 import iranData from "../../../data/iran-cities.json";
 
 const OrderForm = ({ totalPrice, totalOldPrice }: { totalPrice: number; totalOldPrice: number }) => {
@@ -26,7 +25,6 @@ const OrderForm = ({ totalPrice, totalOldPrice }: { totalPrice: number; totalOld
   const [message, setMessage] = useState({ text: "", type: "" });
   const [loading, setLoading] = useState(false);
 
-  // استخراج لیست شهرها بر اساس استان انتخاب شده از فایل محلی
   const availableCities = useMemo(() => {
     const selected = iranData.find((item) => item.name === formData.province);
     return selected ? selected.cities : [];
@@ -49,7 +47,7 @@ const OrderForm = ({ totalPrice, totalOldPrice }: { totalPrice: number; totalOld
 
     setLoading(true);
     try {
-      const res = await axios.post("https://apika.ir/apitak/orders/submit_order.php", {
+      const res = await axios.post("https://apitak.ir/apitak/orders/submit_order.php", {
         userPhone: phoneNumber,
         ...formData,
         products: cartItems,
@@ -86,7 +84,6 @@ const OrderForm = ({ totalPrice, totalOldPrice }: { totalPrice: number; totalOld
 
         <div className="p-8 md:p-12 space-y-10">
           <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* انتخاب استان */}
             <div className="space-y-1">
               <label className={labelStyle}><MapPin size={14}/> استان</label>
               <select name="province" value={formData.province} onChange={handleChange} className={inputStyle}>
@@ -97,7 +94,6 @@ const OrderForm = ({ totalPrice, totalOldPrice }: { totalPrice: number; totalOld
               </select>
             </div>
 
-            {/* انتخاب شهر */}
             <div className="space-y-1">
               <label className={labelStyle}><Navigation size={14}/> شهر</label>
               <select name="city" value={formData.city} onChange={handleChange} className={inputStyle} disabled={!formData.province}>

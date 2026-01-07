@@ -108,12 +108,11 @@
 // export default HeroSection;
 'use client';
 
-import { ArrowLeft, CheckCircle2, Star, ShieldCheck, Zap, ArrowUpRight } from "lucide-react";
+import { Zap, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 
 const Hero = () => {
-  // افکت پارالاکس برای تصویر با حرکت ماوس
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useTransform(y, [-100, 100], [5, -5]);
@@ -130,21 +129,18 @@ const Hero = () => {
       onMouseMove={handleMouse}
       className="relative min-h-[95vh] flex items-center overflow-hidden bg-[#fdfeff] py-16 lg:py-0"
     >
-      {/* لایه‌های نوری پس‌زمینه (Ambient Light) */}
       <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-gradient-to-br from-blue-200/30 to-purple-200/20 rounded-full filter blur-[120px] -z-10 opacity-60"></div>
       <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-gradient-to-tr from-cyan-100/40 to-blue-50/30 rounded-full filter blur-[100px] -z-10 opacity-50"></div>
 
       <div className="container mx-auto px-6 lg:px-16 relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           
-          {/* محتوای متنی */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-right order-2 lg:order-1"
           >
-            {/* Badge مدرن */}
             <div className="inline-flex items-center gap-3 px-5 py-2 rounded-2xl bg-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 text-slate-800 mb-8 overflow-hidden relative group">
               <div className="absolute inset-0 bg-blue-500/5 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
               <div className="flex -space-x-1 rtl:space-x-reverse">
@@ -173,7 +169,6 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-wrap gap-6">
-              {/* دکمه اصلی با Glow داینامیک */}
               <Link href='/Productss' className="group relative">
                 <div className="absolute inset-0 bg-blue-600 blur-xl opacity-20 group-hover:opacity-40 transition-opacity rounded-2xl"></div>
                 <div className="relative px-10 py-5 bg-slate-900 text-white font-extrabold rounded-2xl flex items-center gap-3 transition-transform active:scale-95 group-hover:-translate-y-1">
@@ -187,7 +182,6 @@ const Hero = () => {
               </Link>
             </div>
 
-            {/* آمارها با دیزاین جدید */}
             <div className="flex gap-12 lg:mt-16 pt-10 border-t border-slate-100">
               <StatItem value="۱۵" label="سال سابقه" />
               <div className="w-px h-12 bg-slate-100"></div>
@@ -197,12 +191,10 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          {/* تصویر با کنترلر پارالاکس */}
           <motion.div 
             style={{ rotateX, rotateY, perspective: 1000 }}
             className="relative order-1 lg:order-2"
           >
-            {/* کارت معلق پولی (Floating Glass Card) */}
             <motion.div 
               animate={{ y: [0, -20, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
@@ -229,7 +221,6 @@ const Hero = () => {
               </div>
             </motion.div>
 
-            {/* بدنه اصلی تصویر */}
             <div className="relative group cursor-none">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-[3rem] opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500"></div>
               
@@ -237,15 +228,13 @@ const Hero = () => {
                 <motion.img 
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.6 }}
-                  src='https://apika.ir/images/pumpbanner.jpg'
+                  src='https://apitak.ir/images/pumpbanner.jpg'
                   alt="Premium Industrial Pump" 
                   className="w-full h-auto object-cover"
                 />
-                {/* Overlay گرادینت روی عکس */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
               </div>
 
-              {/* المان‌های هندسی انتزاعی */}
               <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-400/10 rounded-full blur-3xl -z-10"></div>
             </div>
           </motion.div>

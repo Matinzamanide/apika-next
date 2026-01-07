@@ -219,7 +219,5 @@
 import HeaderClient from "./HeaderClient";
 
 export default function Header() {
-  // در اینجا می‌توانید در آینده داده‌های استاتیک مثل لیست دسته‌بندی‌ها را 
-  // مستقیم از دیتابیس بگیرید و به HeaderClient پاس بدهید (بدون نیاز به useEffect)
   return <HeaderClient />;
 }

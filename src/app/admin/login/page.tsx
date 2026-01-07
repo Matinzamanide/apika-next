@@ -83,7 +83,7 @@ const Login: React.FC = () => {
     setError('');
 
     try {
-      const res = await fetch('https://apika.ir/apitak/admin/admin_login.php', {
+      const res = await fetch('https://apitak.ir/apitak/admin/admin_login.php', {
         method: 'POST',
         credentials: 'include', // حتما برای سشن
         headers: { 'Content-Type': 'application/json' },

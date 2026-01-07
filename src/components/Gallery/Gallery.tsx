@@ -36,7 +36,6 @@ const Gallery: React.FC<IGallery> = ({ GalleryProps }) => {
         </AnimatePresence>
       </div>
 
-      {/* Thumbnail Images */}
       <div className="flex flex-wrap justify-center gap-3 mt-6">
         {GalleryProps.images.map((img, i) => (
           <button
@@ -56,7 +55,7 @@ const Gallery: React.FC<IGallery> = ({ GalleryProps }) => {
               width={96}
               height={96}
               className="object-contain rounded-md"
-              unoptimized // ← تست برای جلوگیری از خطای لود
+              unoptimized 
             />
           </button>
         ))}

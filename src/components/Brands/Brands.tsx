@@ -5,16 +5,16 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 const data = [
-  { src: 'https://apika.ir/images/Electrogen.png', brand: 'الکتروژن',link:'/ProductBrands/الکتروژن' },
-  { src: 'https://apika.ir/images/motogen.png', brand: 'موتوژن',link:'/ProductBrands/موتوژن' },
-  { src: 'https://apika.ir/images/bahar.png', brand: 'بهار پمپ',link:'/ProductBrands/بهار پمپ' },
-  { src: 'https://apika.ir/images/rayan.jpg', brand: 'رایان پمپ',link:'/ProductBrands/' },
-  { src: 'https://apika.ir/images/hedfix.png', brand: 'هدفیکس',link:'/ProductBrands/HEDFIX' },
-  { src: 'https://apika.ir/images/PENTAX.png', brand: 'پنتاکس',link:'/ProductBrands/PENTAX' },
-  { src: 'https://apika.ir/images/onyx.png', brand: 'ONYX',link:'/ProductBrands/ONYX' },
-  { src: 'https://apika.ir/images/abara.png', brand: 'آبارا',link:'/ProductBrands/آبارا' },
-  { src: 'https://apika.ir/images/Danfoss.webp', brand: 'Danfoss',link:'/ProductBrands/Danfoss' },
-  { src: 'https://apika.ir/images/hachasou.png', brand: 'هاچاسو',link:'/ProductBrands/' },
+  { src: 'https://apitak.ir/images/Electrogen.png', brand: 'الکتروژن',link:'/ProductBrands/الکتروژن' },
+  { src: 'https://apitak.ir/images/motogen.png', brand: 'موتوژن',link:'/ProductBrands/موتوژن' },
+  { src: 'https://apitak.ir/images/bahar.png', brand: 'بهار پمپ',link:'/ProductBrands/بهار پمپ' },
+  { src: 'https://apitak.ir/images/rayan.jpg', brand: 'رایان پمپ',link:'/ProductBrands/' },
+  { src: 'https://apitak.ir/images/hedfix.png', brand: 'هدفیکس',link:'/ProductBrands/HEDFIX' },
+  { src: 'https://apitak.ir/images/PENTAX.png', brand: 'پنتاکس',link:'/ProductBrands/PENTAX' },
+  { src: 'https://apitak.ir/images/onyx.png', brand: 'ONYX',link:'/ProductBrands/ONYX' },
+  { src: 'https://apitak.ir/images/abara.png', brand: 'آبارا',link:'/ProductBrands/آبارا' },
+  { src: 'https://apitak.ir/images/Danfoss.webp', brand: 'Danfoss',link:'/ProductBrands/Danfoss' },
+  { src: 'https://apitak.ir/images/hachasou.png', brand: 'هاچاسو',link:'/ProductBrands/' },
 ];
 
 const Brands = () => {

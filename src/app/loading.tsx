@@ -68,12 +68,9 @@ import Image from 'next/image';
 export default function LoadingApika() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 px-4 relative overflow-hidden">
-      {/* نام APIKA */}
       <h1 className="relative text-6xl md:text-8xl font-extrabold text-gray-800 tracking-wide">
-        {/* حرف A با نقطه ای برای قطره */}
         <span className="relative">
           A
-          {/* نقطه بالای A — محل شروع قطره */}
           <span
             className="absolute top-0 right-1/2 transform -translate-x-1/2 w-3 h-3 bg-blue-500 rounded-full opacity-0 animate-drop-start"
           ></span>
@@ -81,17 +78,13 @@ export default function LoadingApika() {
         PIKA
       </h1>
 
-      {/* قطره آب متحرک */}
       <div className="absolute animate-drop-travel">
         <div className="w-3 h-3 bg-blue-500 rounded-full shadow-lg"></div>
-        {/* دم قطره */}
         <div className="w-1 h-4 mx-auto bg-blue-400 rounded-full mt-0.5"></div>
       </div>
 
-      {/* متن بارگذاری (اختیاری) */}
       <p className="text-gray-600 text-sm mt-6 animate-pulse">در حال بارگذاری سیستم...</p>
 
-      {/* استایل انیمیشن‌ها */}
       <style jsx>{`
         @keyframes drop-start {
           0% { opacity: 0; transform: scale(0); }

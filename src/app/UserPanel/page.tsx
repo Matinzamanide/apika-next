@@ -53,7 +53,7 @@ const UserPanel = () => {
     if (!isLoggedIn || !phoneNumber) return;
 
     setLoadingUser(true);
-    axios(`https://apika.ir/apitak/auth/get_user_info.php?phone=${phoneNumber}`)
+    axios(`https://apitak.ir/apitak/auth/get_user_info.php?phone=${phoneNumber}`)
       .then((result) => {
         setUserData(result.data);
         setName(result.data.name);
@@ -71,7 +71,7 @@ const UserPanel = () => {
     if (!isLoggedIn || !phoneNumber) return;
 
     setLoadingOrders(true);
-    const url = `https://apika.ir/apitak/orders/submit_order.php?user_phone=${phoneNumber}`;
+    const url = `https://apitak.ir/apitak/orders/submit_order.php?user_phone=${phoneNumber}`;
     console.log("Fetching orders from:", url);
 
     axios(url)

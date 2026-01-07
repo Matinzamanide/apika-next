@@ -16,7 +16,7 @@ const NewProductForm = () => {
     before_discount_price: '',
     inventory: '',
     brand: '',
-    catalog_url: '', // اینجا می‌تونه از فایل یا URL دستی پر بشه
+    catalog_url: '', 
     images: [] as string[],
     categories: [''],
     specifications: [{ spec_key: '', spec_label: '', spec_value: '' }] as Specification[],
@@ -98,12 +98,11 @@ const NewProductForm = () => {
     setImageFiles((prev) => prev.filter((_, i) => i !== index));
   };
 
-  // آپلود یک فایل (تصویر یا PDF)
   const handleFileUpload = async (file: File): Promise<string> => {
     const formData = new FormData();
     formData.append('file', file);
     try {
-      const res = await fetch('https://apika.ir/apitak/upload.php', {
+      const res = await fetch('https://apitak.ir/apitak/upload.php', {
         method: 'POST',
         body: formData,
       });
@@ -126,7 +125,6 @@ const NewProductForm = () => {
 
     let catalogUrl = '';
 
-    // اولویت: اگر فایل آپلود شده باشد، آن را آپلود کن
     if (catalogFile) {
       catalogUrl = await handleFileUpload(catalogFile);
       if (!catalogUrl) {
@@ -135,12 +133,9 @@ const NewProductForm = () => {
         return;
       }
     }
-    // اگر فایل نبود، از URL دستی استفاده کن
     else if (manualCatalogUrl.trim() !== '') {
       catalogUrl = manualCatalogUrl.trim();
     }
-
-    // آپلود تصاویر
     const uploadedImages: string[] = [];
     for (const img of imageFiles) {
       const url = await handleFileUpload(img);
@@ -166,7 +161,7 @@ const NewProductForm = () => {
     };
 
     try {
-      const res = await fetch('https://apika.ir/apitak/insert_products.php', {
+      const res = await fetch('https://apitak.ir/apitak/insert_products.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(finalForm),
@@ -177,7 +172,6 @@ const NewProductForm = () => {
 
       if (result.success) {
         toast.success('محصول با موفقیت ارسال شد!');
-        // ✅ نمی‌خوایم فرم پاک بشه — فقط اطلاعات آپلود حذف میشه
         setImageFiles([]);
         setCatalogFile(null);
         setManualCatalogUrl('');
@@ -200,7 +194,6 @@ const NewProductForm = () => {
       className="max-w-4xl mx-auto p-6 md:p-10 bg-white rounded-2xl shadow-2xl space-y-8 transition-all duration-300"
       dir="rtl"
     >
-      {/* عنوان فرم */}
       <div className="text-center mb-8">
         <h2 className="text-4xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-700 bg-clip-text text-transparent">
           افزودن محصول جدید
@@ -208,7 +201,6 @@ const NewProductForm = () => {
         <p className="text-gray-500 mt-2">فرم کامل و حرفه‌ای برای افزودن محصول به فروشگاه</p>
       </div>
 
-      {/* اطلاعات اصلی */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
           <label htmlFor="title" className="block text-sm font-semibold text-gray-700 mb-2">عنوان محصول</label>
@@ -269,7 +261,6 @@ const NewProductForm = () => {
         </div>
       </div>
 
-      {/* تصاویر */}
       <div className="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl shadow-inner">
         <h3 className="text-lg font-bold text-blue-800 mb-4 flex items-center gap-2">
           <ImageIcon size={22} className="text-blue-600" /> تصاویر محصول
@@ -355,7 +346,6 @@ const NewProductForm = () => {
           )}
         </div>
 
-        {/* یا وارد کردن URL دستی */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">یا وارد کردن URL کاتالوگ</label>
           <input
@@ -369,7 +359,6 @@ const NewProductForm = () => {
         </div>
       </div>
 
-      {/* دسته‌بندی‌ها */}
       <div className="p-6 bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-100 rounded-2xl">
         <h3 className="text-lg font-bold text-purple-800 mb-4 flex items-center gap-2">
           <Tag size={22} className="text-purple-600" /> دسته‌بندی‌ها
@@ -402,7 +391,6 @@ const NewProductForm = () => {
         </button>
       </div>
 
-      {/* مشخصات فنی */}
       <div className="p-6 bg-gradient-to-br from-green-50 to-teal-50 border border-green-100 rounded-2xl">
         <h3 className="text-lg font-bold text-green-800 mb-4 flex items-center gap-2">
           <CheckCircle2 size={22} className="text-green-600" /> مشخصات فنی
@@ -449,7 +437,6 @@ const NewProductForm = () => {
         </button>
       </div>
 
-      {/* ویژگی‌ها */}
       <div className="p-6 bg-gradient-to-br from-orange-50 to-yellow-50 border border-orange-100 rounded-2xl">
         <h3 className="text-lg font-bold text-orange-800 mb-4 flex items-center gap-2">
           <CheckCircle2 size={22} className="text-orange-600" /> ویژگی‌های محصول
@@ -482,7 +469,6 @@ const NewProductForm = () => {
         </button>
       </div>
 
-      {/* دکمه ارسال */}
       <button
         type="submit"
         disabled={uploading}

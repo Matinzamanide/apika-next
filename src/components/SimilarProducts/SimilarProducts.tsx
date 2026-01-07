@@ -15,7 +15,7 @@ const [data,setData]=useState<IProduct[]>([]);
 
 
 useEffect(()=>{
-  axios('https://apika.ir/apitak/get_products.php')
+  axios('https://apitak.ir/apitak/get_products.php')
   .then((res)=>{
     setData(res.data);
   })

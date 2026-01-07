@@ -132,7 +132,6 @@ const PumpBrands = () => {
 
       <div className="w-full mx-auto bg-gradient-to-b from-blue-50 to-white p-6 rounded-2xl shadow-xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-auto md:h-[400px] overflow-hidden">
-          {/* Main Brand Image (Right/Top on Mobile) */}
           <div className="relative w-full h-[250px] md:h-full rounded-lg overflow-hidden group flex items-center justify-center bg-gray-100"> {/* Added flex centering & bg-gray-100 for visibility of empty space */}
             <Image
               src={mainBrandImage.src}
@@ -148,7 +147,6 @@ const PumpBrands = () => {
             </div>
           </div>
 
-          {/* Smaller Brand Grid (Left/Bottom on Mobile) */}
           <div className="grid grid-cols-2 gap-4">
             {brandImages.map((brand, i) => (
               <motion.div

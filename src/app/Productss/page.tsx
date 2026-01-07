@@ -72,7 +72,7 @@ const Products = () => {
   useEffect(() => {
     setLoading(true);
     setError(null);
-    axios("https://apika.ir/apitak/get_products.php")
+    axios("https://apitak.ir/apitak/get_products.php")
       .then((res) => {
         const products: IProduct[] = res.data;
         setData(products);
@@ -109,7 +109,6 @@ const Products = () => {
 
   return (
     <div className="flex flex-col lg:flex-row w-[95%] mx-auto my-8 gap-8 min-h-screen">
-      {/* فیلترها */}
       <aside className="lg:w-1/4 w-full lg:sticky lg:top-4 self-start">
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
           <h3 className="text-lg font-bold text-gray-800 mb-4 text-right">
@@ -150,9 +149,7 @@ const Products = () => {
         </div>
       </aside>
 
-      {/* محصولات */}
       <main className="lg:w-3/4 w-full">
-        {/* تیتر و وضعیت */}
         <div className="mb-6 text-right">
           <h1 className="text-2xl font-bold text-gray-800">
             {selectedCategory ? `محصولات دسته: ${selectedCategory}` : "همه محصولات"}
@@ -162,14 +159,12 @@ const Products = () => {
           </p>
         </div>
 
-        {/* خطای دریافت داده */}
         {error && (
           <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-lg text-sm text-right mb-6">
             {error}
           </div>
         )}
 
-        {/* بارگذاری */}
         {loading ? (
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
             {Array.from({ length: 6 }).map((_, i) => (

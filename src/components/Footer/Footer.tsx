@@ -14,11 +14,9 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-[#0a0f1a] text-slate-300 font-[vazirmatn] overflow-hidden">
-      {/* المان‌های نوری پس‌زمینه */}
       <div className="absolute top-0 left-1/4 w-64 h-64 bg-blue-600/10 rounded-full blur-[120px] -z-0"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-600/5 rounded-full blur-[100px] -z-0"></div>
 
-      {/* بخش خبرنامه یا CTA قبل از فوتر */}
       <div className="border-b border-white/5 relative z-10">
         <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="text-right">
@@ -33,11 +31,9 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* محتوای اصلی */}
       <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
           
-          {/* ستون ۱: برندینگ */}
           <div className="lg:col-span-4 space-y-8 text-right">
             <Link href="/" className="inline-block transition-transform hover:scale-105">
               <img src="/apika2.svg" alt="APIKA" className="h-12 brightness-0 invert" />
@@ -52,7 +48,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* ستون ۲: دسته‌بندی‌ها */}
           <div className="lg:col-span-2 text-right">
             <h4 className="text-white font-black text-lg mb-8 relative inline-block">
               محصولات
@@ -66,7 +61,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* ستون ۳: لینک‌های سریع */}
           <div className="lg:col-span-2 text-right">
             <h4 className="text-white font-black text-lg mb-8 relative inline-block">
               دسترسی سریع
@@ -80,7 +74,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* ستون ۴: اطلاعات تماس */}
           <div className="lg:col-span-4 text-right">
             <h4 className="text-white font-black text-lg mb-8 relative inline-block">
               پل‌های ارتباطی
@@ -95,7 +88,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* بخش اینماد و کپی‌رایت */}
       <div className="bg-black/40 py-8 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
           
@@ -125,7 +117,6 @@ const Footer = () => {
   );
 };
 
-// کامپوننت لینک‌های فوتر
 const FooterLink = ({ href, label }: { href: string, label: string }) => (
   <li>
     <Link href={href} className="text-slate-500 hover:text-blue-500 flex items-center gap-2 group transition-all duration-300">
@@ -135,7 +126,6 @@ const FooterLink = ({ href, label }: { href: string, label: string }) => (
   </li>
 );
 
-// کامپوننت اطلاعات تماس
 const ContactInfo = ({ icon, title, value }: { icon: React.ReactNode, title: string, value: string }) => (
   <div className="flex items-center gap-4 flex-row-reverse group">
     <div className="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
@@ -148,7 +138,6 @@ const ContactInfo = ({ icon, title, value }: { icon: React.ReactNode, title: str
   </div>
 );
 
-// کامپوننت آیکون شبکه‌های اجتماعی
 const SocialIcon = ({ icon, href, color }: { icon: React.ReactNode, href: string, color: string }) => (
   <a 
     href={href} 

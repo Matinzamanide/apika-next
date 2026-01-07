@@ -1,5 +1,3 @@
-// No need to import ICartItems as it's not used here.
-// import { ICartItems } from "@/context/ShoppingCartContext";
 import OrderItem from "../OrderItem/orderItem";
 
 export interface IsOrder {
@@ -13,7 +11,7 @@ export interface IsOrder {
   address: string;
   phone: string;
   shipping_method: string;
-  products: string; // This should be string as it's a JSON string
+  products: string;
   total_price: number;
   old_total_price: number;
   payment_status: string;
@@ -36,7 +34,7 @@ const OrderDetails: React.FC<IsOrder> = async ({
   payment_status,
   phone,
   postal_code,
-  products, // This is the raw JSON string
+  products, 
   province,
   shipping_method,
   total_price,
@@ -47,13 +45,11 @@ const OrderDetails: React.FC<IsOrder> = async ({
     parsedProducts = JSON.parse(products);
   } catch (e) {
     console.error("خطا در تجزیه‌ی لیست محصولات:", e);
-    // You might want to display an error message to the user here
-    // or handle this more gracefully, e.g., by setting parsedProducts to an empty array.
   }
 
   console.log(parsedProducts);
   const res = await fetch(
-    `https://apika.ir/apitak/auth/get_user_info.php?id=${user_id}`
+    `https://apitak.ir/apitak/auth/get_user_info.php?id=${user_id}`
   );
   const data = await res.json();
   console.log(data);

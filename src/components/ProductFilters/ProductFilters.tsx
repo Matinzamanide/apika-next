@@ -1,31 +1,27 @@
-// src/components/ProductFilters/ProductFilters.tsx
 'use client';
 
 import React from 'react';
-import { useRouter, useSearchParams } from 'next/navigation'; // هوک‌های Next.js برای کار با URL
+import { useRouter, useSearchParams } from 'next/navigation'; 
 
 interface ProductFiltersProps {
-  availableBrands: string[]; // لیستی از برندهای موجود برای نمایش در فیلتر
-  title: string; // برای نمایش عنوان فیلتر (مثلا: "فیلترها")
+  availableBrands: string[];
+  title: string; 
 }
 
 const ProductFilters: React.FC<ProductFiltersProps> = ({ availableBrands, title }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // گرفتن مقادیر فعلی فیلترها از URL
   const currentBrand = searchParams.get('brand') || 'all';
   const currentSortOrder = searchParams.get('sort') || 'default';
 
-  // تابع برای به‌روزرسانی URL هنگام تغییر فیلتر
   const updateUrl = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
     if (value === 'all' || value === 'default') {
-      params.delete(key); // اگر مقدار پیش‌فرض بود، پارامتر را از URL حذف کن
+      params.delete(key); 
     } else {
       params.set(key, value);
     }
-    // تغییر URL بدون ریلود کامل صفحه (soft navigation)
     router.push(`?${params.toString()}`);
   };
 
@@ -33,7 +29,6 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({ availableBrands, title 
     <div className="bg-white rounded-xl p-4 space-y-6 shadow-lg md:sticky md:top-20 h-fit text-gray-800">
       <h3 className="text-xl font-bold border-b border-gray-300 pb-2">{title}</h3>
 
-      {/* فیلتر برند */}
       <div>
         <label htmlFor="brand-filter" className="block text-sm font-medium mb-1">برند</label>
         <select
@@ -49,7 +44,6 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({ availableBrands, title 
         </select>
       </div>
 
-      {/* مرتب‌سازی */}
       <div>
         <label className="block text-sm font-medium mb-1">مرتب‌سازی</label>
         <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2">

@@ -23,7 +23,7 @@ const CartItem: React.FC<ICartItem> = ({ id }) => {
   const [product, setProduct] = useState<any>(null);
 
   useEffect(() => {
-    axios(`https://apika.ir/apitak/get_products.php?id=${id}`).then((res) => {
+    axios(`https://apitak.ir/apitak/get_products.php?id=${id}`).then((res) => {
       const fetched = res.data;
       const item = Array.isArray(fetched) ? fetched[0] : fetched;
       setProduct(item);
@@ -51,7 +51,6 @@ const CartItem: React.FC<ICartItem> = ({ id }) => {
   return (
     <Link href={``}>
       <div className="flex flex-col md:flex-row items-center gap-6 bg-white p-4 rounded-xl shadow-sm border border-gray-200">
-        {/* تصویر محصول */}
         <div className="w-28 h-28 relative">
           <Image
             src={product.images?.[0] || "/placeholder.png"}
@@ -60,13 +59,10 @@ const CartItem: React.FC<ICartItem> = ({ id }) => {
             className="object-contain rounded-md"
           />
         </div>
-
-        {/* جزئیات محصول */}
         <div className="flex-1 w-full">
           <h2 className="text-lg font-semibold mb-2">{product.title}</h2>
 
           <div className="flex items-center justify-between gap-4 flex-wrap">
-            {/* کنترل تعداد */}
             <div className="flex items-center border border-gray-300 rounded-md overflow-hidden">
               <button
                 onClick={() => handleDecreaseProductQty(id)}
@@ -83,7 +79,6 @@ const CartItem: React.FC<ICartItem> = ({ id }) => {
               </button>
             </div>
 
-            {/* قیمت و تخفیف */}
             <div className="text-right">
               <div className="text-blue-600 font-bold text-base whitespace-nowrap">
                 {totalPrice.toLocaleString()} تومان
@@ -100,7 +95,6 @@ const CartItem: React.FC<ICartItem> = ({ id }) => {
               )}
             </div>
 
-            {/* حذف */}
             <button
               onClick={() => handleRemoveProduct(id)}
               className="text-red-500 hover:text-red-600"

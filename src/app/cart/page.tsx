@@ -22,7 +22,7 @@ const Cart = () => {
   useEffect(() => {
     const fetchData = async () => {
       const promises = cartItems.map((item) =>
-        axios(`https://apika.ir/apitak/get_products.php?id=${item.id}`).then(
+        axios(`https://apitak.ir/apitak/get_products.php?id=${item.id}`).then(
           (res) => {
             const data = Array.isArray(res.data) ? res.data[0] : res.data;
             return {

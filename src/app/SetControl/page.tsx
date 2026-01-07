@@ -16,7 +16,7 @@ const HouseholdPump = async (props: ExpansionSourceProps) => {
 
   let allProducts: IProduct[] = [];
   try {
-    const res = await fetch("https://apika.ir/apitak/get_products.php", {
+    const res = await fetch("https://apitak.ir/apitak/get_products.php", {
       cache: "no-store",
     });
     allProducts = (await res.json()) as IProduct[];

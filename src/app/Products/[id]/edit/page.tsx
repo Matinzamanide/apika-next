@@ -34,7 +34,7 @@ export default function EditProductPage() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`https://apika.ir/apitak/get_products.php?id=${id}`);
+        const res = await fetch(`https://apitak.ir/apitak/get_products.php?id=${id}`);
         if (!res.ok) throw new Error('محصول یافت نشد');
         const data = await res.json();
         if (data && data.id) {
@@ -80,16 +80,14 @@ export default function EditProductPage() {
       imageFiles.forEach((file) => formData.append('images[]', file));
 
       try {
-        const res = await fetch('https://apika.ir/apitak/upload.php', {
+        const res = await fetch('https://apitak.ir/apitak/upload.php', {
           method: 'POST',
           body: formData,
-          // ❌ نباید Content-Type ست شود — مرورگر خودش می‌ذاره
         });
 
         const result = await res.json();
 
         if (result.success && Array.isArray(result.image_urls)) {
-          // ✅ آپلود موفقیت‌آمیز — آپدیت وضعیت
           setProduct((prev) =>
             prev
               ? {
@@ -110,7 +108,6 @@ export default function EditProductPage() {
     [product]
   );
 
-  // 4️⃣ مدیریت آرایه‌ها: دسته‌ها، ویژگی‌ها، تصاویر (دستی)
   const handleArrayChange = useCallback(
     (key: 'images' | 'categories' | 'product_features', index: number, value: string) => {
       setProduct((prev) =>
@@ -146,7 +143,6 @@ export default function EditProductPage() {
     []
   );
 
-  // 5️⃣ مدیریت مشخصات فنی
   const handleSpecChange = useCallback(
     (index: number, field: 'spec_key' | 'spec_label' | 'spec_value', value: string) => {
       setProduct((prev) =>
@@ -188,7 +184,6 @@ export default function EditProductPage() {
     );
   }, []);
 
-  // 6️⃣ ارسال فرم و آپدیت محصول
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!product) return;
@@ -196,7 +191,7 @@ export default function EditProductPage() {
     setIsSubmitting(true);
 
     try {
-      const res = await fetch('https://apika.ir/apitak/update_product.php', {
+      const res = await fetch('https://apitak.ir/apitak/update_product.php', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -208,7 +203,7 @@ export default function EditProductPage() {
 
       if (result.success) {
         alert('محصول با موفقیت ویرایش شد!');
-        router.push('/products'); // یا مسیر دلخواه
+        router.push('/'); 
         router.refresh();
       } else {
         alert('خطا در ویرایش: ' + (result.error || 'نامشخص'));
@@ -221,7 +216,6 @@ export default function EditProductPage() {
     }
   };
 
-  // 7️⃣ UI بارگذاری و خطای محصول
   if (loading) {
     return <div className="p-10 text-center text-lg">در حال بارگذاری...</div>;
   }
@@ -234,7 +228,6 @@ export default function EditProductPage() {
     );
   }
 
-  // 8️⃣ رِندر فرم
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-xl my-10">
       <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">ویرایش محصول</h2>
@@ -242,7 +235,6 @@ export default function EditProductPage() {
       <form onSubmit={handleSubmit} className="space-y-8">
         <input type="hidden" name="id" value={product.id} />
 
-        {/* عنوان */}
         <div className="space-y-2">
           <label className="block font-semibold text-gray-700">عنوان</label>
           <input
@@ -255,7 +247,6 @@ export default function EditProductPage() {
           />
         </div>
 
-        {/* قیمت و موجودی */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="space-y-2">
             <label className="block font-semibold text-gray-700">قیمت (تومان)</label>
@@ -292,7 +283,6 @@ export default function EditProductPage() {
           </div>
         </div>
 
-        {/* برند و کاتالوگ */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
             <label className="block font-semibold text-gray-700">برند</label>
@@ -318,7 +308,6 @@ export default function EditProductPage() {
           </div>
         </div>
 
-        {/* دسته‌بندی‌ها */}
         <div className="space-y-3">
           <label className="block font-semibold text-gray-700">دسته‌بندی‌ها</label>
           {product.categories.map((cat, i) => (
@@ -348,7 +337,6 @@ export default function EditProductPage() {
           </button>
         </div>
 
-        {/* تصاویر */}
         <div className="space-y-3">
           <label className="block font-semibold text-gray-700">تصاویر</label>
           {product.images.map((img, i) => (
@@ -377,7 +365,6 @@ export default function EditProductPage() {
             + افزودن تصویر دستی
           </button>
 
-          {/* آپلود فایل */}
           <div className="mt-4">
             <label className="block font-medium text-gray-700 mb-2">آپلود تصاویر جدید</label>
             <input
@@ -390,7 +377,6 @@ export default function EditProductPage() {
           </div>
         </div>
 
-        {/* مشخصات فنی */}
         <div className="space-y-3">
           <label className="block font-semibold text-gray-700">مشخصات فنی</label>
           {product.specifications.map((spec, i) => (
@@ -434,7 +420,6 @@ export default function EditProductPage() {
           </button>
         </div>
 
-        {/* ویژگی‌ها */}
         <div className="space-y-3">
           <label className="block font-semibold text-gray-700">ویژگی‌ها</label>
           {product.product_features.map((feature, i) => (
@@ -464,7 +449,6 @@ export default function EditProductPage() {
           </button>
         </div>
 
-        {/* دکمه ارسال */}
         <button
           type="submit"
           disabled={isSubmitting}

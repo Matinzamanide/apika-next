@@ -43,16 +43,14 @@ export default function Header() {
 
   return (
     <>
-      {/* هدر شیشه‌ای با گرادیانت آبی */}
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/10 border border-cyan-400/20 shadow-glow shadow-cyan-500/10 backdrop-saturate-150 transition-all duration-300 py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
 
-            {/* لوگو */}
             <div className="flex-shrink-0">
               <Link href='/' className="flex items-center font-extrabold text-2xl group">
                 <img 
-                  src="https://apika.ir/images/apika2.svg" 
+                  src="https://apitak.ir/images/apika2.svg" 
                   alt="APIKA Logo" 
                   width={130} 
                   height={40} 
@@ -61,7 +59,6 @@ export default function Header() {
               </Link>
             </div>
 
-            {/* منوی دسکتاپ */}
             <nav className="hidden md:flex items-center space-x-1 rtl" ref={menuRef}>
               <Link
                 href="/"
@@ -71,7 +68,6 @@ export default function Header() {
                 صفحه اصلی
               </Link>
 
-              {/* مگا منوی شیشه‌ای */}
               <div
                 className="relative"
                 onMouseEnter={openMenu}
@@ -90,7 +86,6 @@ export default function Header() {
                   />
                 </span>
 
-                {/* مگا منوی لوکس */}
                 {isProductsMenuOpen && (
                   <div
                     className="absolute right-0 mt-2 w-96 origin-top-right rounded-3xl overflow-hidden shadow-2xl border border-cyan-400/30 z-50 animate-in fade-in slide-in-from-top-2 duration-300"
@@ -110,9 +105,9 @@ export default function Header() {
                         </h3>
                         <ul className="space-y-2">
                           {[
-                            { to: "/products/category1/item1", label: "پمپ های خانگی" },
-                            { to: "/products/category1/item2", label: "دوزینگ پمپ" },
-                            { to: "/products/category1/item3", label: "لجن کش" },
+                            { to: "/HouseholdPump", label: "پمپ های خانگی" },
+                            { to: "/DosingPump", label: "دوزینگ پمپ" },
+                            { to: "/SludgePump", label: "لجن کش" },
                           ].map((item, i) => (
                             <li key={i}>
                               <Link
@@ -131,13 +126,13 @@ export default function Header() {
                       <div>
                         <h3 className="font-bold text-white mb-3 text-lg flex items-center gap-2">
                           <span className="inline-block w-2 h-2 bg-gradient-to-r from-green-400 to-teal-500 rounded-full animate-pulse"></span>
-                          دسته بندی ۲
+                            لوازم جانبی
                         </h3>
                         <ul className="space-y-2">
                           {[
-                            { href: "/products/category2/item1", label: "محصول ۲.۱" },
-                            { href: "/products/category2/item2", label: "محصول ۲.۲" },
-                            { href: "/products/category2/item3", label: "محصول ۲.۳" },
+                            { href: "/SetControl", label: "ست کنترل" },
+                            { href: "/ExpansionSource", label: "منبع انبساط" },
+                            { href: "/Cooler", label: "لوازم کولر" },
                           ].map((item, i) => (
                             <li key={i}>
                               <a
