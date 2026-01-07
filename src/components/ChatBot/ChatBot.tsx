@@ -271,7 +271,6 @@ const ChatBot = () => {
               </button>
             </div>
 
-            {/* Messages Area */}
             <div className="flex-1 overflow-y-auto p-5 space-y-6 bg-gradient-to-b from-gray-50/50 to-white/50 custom-scrollbar">
               {messages.map((msg, i) => (
                 <motion.div
@@ -334,7 +333,6 @@ const ChatBot = () => {
         )}
       </AnimatePresence>
 
-      {/* Main Toggle Button */}
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.9 }}

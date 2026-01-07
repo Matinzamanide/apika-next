@@ -48,7 +48,7 @@ export async function POST(req: Request) {
     // دریافت محصولات
     let products: Product[] = [];
     try {
-      const res = await fetch('https://apika.ir/apitak/get_products.php', {
+      const res = await fetch('https://apitak.ir/apitak/get_products.php', {
         cache: 'force-cache',
       });
       const data = await res.json();
@@ -60,15 +60,11 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
-
-    // تابع Fuzzy Match
     const fuzzyMatch = (text: string, query: string): boolean => {
       const t = text.toLowerCase().replace(/[\s\-_]/g, '');
       const q = query.toLowerCase().replace(/[\s\-_]/g, '');
       return t.includes(q) || q.includes(t);
     };
-
-    // استخراج عدد از متن (مثلاً 100 از "100 لیتر")
     const extractNumber = (text: string): number | null => {
       const match = text.match(/\d+(\.\d+)?/);
       return match ? parseFloat(match[0]) : null;
