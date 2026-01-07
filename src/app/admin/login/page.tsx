@@ -85,8 +85,11 @@ const Login: React.FC = () => {
     try {
       const res = await fetch('https://apitak.ir/apitak/admin/admin_login.php', {
         method: 'POST',
-        credentials: 'include', // حتما برای سشن
-        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache' 
+        },
         body: JSON.stringify({ username, password }),
       });
 
