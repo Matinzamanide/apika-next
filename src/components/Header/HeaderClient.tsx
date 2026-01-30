@@ -122,7 +122,6 @@ export default function Header() {
                           ))}
                         </ul>
                       </div>
-
                       <div>
                         <h3 className="font-bold text-white mb-3 text-lg flex items-center gap-2">
                           <span className="inline-block w-2 h-2 bg-gradient-to-r from-green-400 to-teal-500 rounded-full animate-pulse"></span>
@@ -162,8 +161,6 @@ export default function Header() {
                   </div>
                 )}
               </div>
-
-              {/* سبد خرید */}
               <Link
                 href="/cart"
                 className="flex items-center gap-2 px-4 py-2.5 text-blue-950 hover:text-orange-700 hover:bg-orange-500/20 rounded-xl backdrop-blur-sm border border-cyan-400/0 hover:border-orange-400/30 transition-all duration-300 group relative"
@@ -184,8 +181,6 @@ export default function Header() {
                   )}
                 </span>
               </Link>
-
-              {/* تماس با ما */}
               <Link
                 href="/contact"
                 className="flex items-center gap-2 px-4 py-2.5 text-blue-950 hover:text-red-700 hover:bg-red-500/20 rounded-xl backdrop-blur-sm border border-cyan-400/0 hover:border-red-400/30 transition-all duration-300 group"
@@ -194,8 +189,6 @@ export default function Header() {
                 تماس با ما
               </Link>
             </nav>
-
-            {/* دکمه ورود / پنل کاربری */}
             <div className="hidden md:flex">
               {isLoggedIn ? (
                 <Link
@@ -214,7 +207,6 @@ export default function Header() {
               )}
             </div>
 
-            {/* منوی موبایل */}
             <button
               onClick={() => setSidebarOpen(true)}
               className="md:hidden p-2.5 rounded-xl bg-white/10 text-blue-950 hover:bg-white/20 backdrop-blur-sm border border-cyan-400/20 transition-all duration-300"
@@ -226,7 +218,6 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Backdrop موبایل */}
       {sidebarOpen && (
         <div
           onClick={() => setSidebarOpen(false)}
@@ -234,7 +225,6 @@ export default function Header() {
         />
       )}
 
-      {/* سایدبار موبایل — آبی تیره با جلوه‌های نورانی */}
       <aside
         className={`fixed top-0 right-0 z-50 w-80 h-full bg-gradient-to-b from-blue-950 via-blue-900 to-indigo-950 text-white shadow-2xl transform transition-transform duration-500 ease-in-out md:hidden ${
           sidebarOpen ? 'translate-x-0' : 'translate-x-full'
@@ -243,7 +233,7 @@ export default function Header() {
       >
         <div className="flex items-center justify-between px-6 h-16 border-b border-cyan-400/20">
           <Link href="/" onClick={() => setSidebarOpen(false)}>
-            <img src="https://apika.ir/images/apika2.svg" alt="Logo" width={120} height={40} className="drop-shadow" />
+            <img src="https://apitak.ir/images/apika2.svg" alt="Logo" width={120} height={40} className="drop-shadow" />
           </Link>
           <button
             onClick={() => setSidebarOpen(false)}

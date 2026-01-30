@@ -1,5 +1,4 @@
 'use client';
-
 import React from 'react';
 import { useRouter, useSearchParams } from 'next/navigation'; 
 
@@ -7,7 +6,6 @@ interface ProductFiltersProps {
   availableBrands: string[];
   title: string; 
 }
-
 const ProductFilters: React.FC<ProductFiltersProps> = ({ availableBrands, title }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -73,5 +71,4 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({ availableBrands, title 
     </div>
   );
 };
-
 export default ProductFilters;

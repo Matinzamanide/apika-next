@@ -1,5 +1,4 @@
 import OrderItem from "../OrderItem/orderItem";
-
 export interface IsOrder {
   id: number;
   user_id: number;

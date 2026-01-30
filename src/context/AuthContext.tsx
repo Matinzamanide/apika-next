@@ -22,7 +22,6 @@ interface IAuthContext {
 }
 
 const AuthContext = createContext({} as IAuthContext);
-
 export const useAuthContext = () => {
   return useContext(AuthContext);
 };
@@ -53,7 +52,6 @@ const AuthContextProvider: React.FC<IChildren> = ({ children }) => {
     }
   }, []);
 
-  // ذخیره در localStorage
   useEffect(() => {
     localStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
   }, [isLoggedIn]);

@@ -6,8 +6,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   User, Phone, LogOut, ShoppingBag,
-  MapPin, CreditCard, Calendar, Hash, 
-  CheckCircle2, AlertCircle, X, Copy, 
+  MapPin, Calendar, Hash, Copy, 
   Check, Clock, ShieldCheck, ChevronRight, Info
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -246,7 +245,7 @@ const OrderCard = ({ order, index, onPay }: { order: IOrder, index: number, onPa
 
         <div className="mt-5 flex flex-wrap gap-2">
            {products.slice(0, 3).map((p: any, i: number) => (
-             <OrderItem id={p.id} qty={p.qty} />
+             <OrderItem key={i} id={p.id} qty={p.qty} />
            ))}
            {products.length > 3 && <span className="text-[10px] text-slate-400 font-bold">+{products.length - 3} مورد دیگر</span>}
         </div>

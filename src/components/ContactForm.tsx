@@ -58,10 +58,7 @@ const ContactForm = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      {/* هدر با انیمیشن */}
-     {/* هدر پویا و جذاب */}
 <div className="bg-white overflow-hidden border-b border-gray-100 relative">
-  {/* پس‌زمینه موج‌دار زیبا (SVG) */}
   <div className="absolute inset-0 opacity-5 pointer-events-none">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +75,6 @@ const ContactForm = () => {
   </div>
 
   <div className="max-w-6xl mx-auto px-6 py-20 relative z-10">
-    {/* عنوان اصلی */}
     <div className="text-center max-w-3xl mx-auto mb-8">
       <h1 className="text-4xl md:text-6xl font-extrabold text-gray-800 leading-tight mb-4 tracking-tight">
         در خدمت شما
@@ -90,8 +86,6 @@ const ContactForm = () => {
         ما آماده‌ی شنیدن صدای شما هستیم.
       </p>
     </div>
-
-    {/* انیمیشن Lottie با افکت شناور و نورپردازی */}
     <div className="flex justify-center mt-10">
       <div 
         className="
@@ -100,40 +94,29 @@ const ContactForm = () => {
           drop-shadow-lg
         "
       >
-        {/* نورپردازی زیر انیمیشن */}
         <div className="absolute inset-0 bg-gradient-to-tr from-blue-300 to-transparent rounded-full blur-xl opacity-30 -z-10"></div>
-        
-        {/* iframe انیمیشن */}
-        <iframe
+                <iframe
           src="https://lottie.host/embed/e48d7391-a0f1-404c-9ada-8482fb635d7e/ZFuZFAyKk1.lottie"
           className="w-full h-full rounded-2xl shadow-2xl border border-blue-100"
           title="تماس با ما انیمیشن"
-          style={{ pointerEvents: "none" }} // جلوگیری از تعامل غیرضروری
+          style={{ pointerEvents: "none" }} 
         ></iframe>
       </div>
     </div>
-
-    {/* خط تزیینی زیر انیمیشن */}
     <div className="flex justify-center mt-12">
       <div className="w-20 h-1 bg-gradient-to-r from-transparent via-blue-400 to-transparent rounded-full"></div>
     </div>
   </div>
-
-  {/* ذرات متحرک زیبا (اختیاری - افکت لوکس) */}
   <div className="absolute top-20 left-10 w-2 h-2 bg-blue-300 rounded-full opacity-60 animate-pulse delay-100"></div>
   <div className="absolute top-40 right-20 w-1 h-1 bg-purple-300 rounded-full opacity-50 animate-pulse delay-300"></div>
   <div className="absolute bottom-20 left-20 w-1 h-1 bg-green-300 rounded-full opacity-40 animate-pulse delay-500"></div>
 </div>
-
-      {/* محتوای اصلی */}
       <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12 items-start">
         
-        {/* اطلاعات تماس */}
         <div className="space-y-8">
           <h2 className="text-2xl font-bold text-gray-800">اطلاعات تماس</h2>
 
           <div className="space-y-6">
-            {/* آدرس */}
             <div className="flex items-start space-x-4 space-x-reverse">
               <div className="bg-blue-100 p-3 rounded-full flex-shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -147,7 +130,6 @@ const ContactForm = () => {
               </div>
             </div>
 
-            {/* تلفن */}
             <div className="flex items-start space-x-4 space-x-reverse">
               <div className="bg-green-100 p-3 rounded-full flex-shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -161,7 +143,6 @@ const ContactForm = () => {
               </div>
             </div>
 
-            {/* ایمیل */}
             <div className="flex items-start space-x-4 space-x-reverse">
               <div className="bg-purple-100 p-3 rounded-full flex-shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -175,7 +156,6 @@ const ContactForm = () => {
               </div>
             </div>
 
-            {/* واتساپ */}
             <div className="flex items-start space-x-4 space-x-reverse">
               <div className="bg-emerald-100 p-3 rounded-full flex-shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -197,7 +177,6 @@ const ContactForm = () => {
             </div>
           </div>
 
-          {/* شبکه‌های اجتماعی (اختیاری) */}
           <div className="pt-6 border-t border-gray-200">
             <h3 className="font-semibold text-gray-800 mb-3">ما را دنبال کنید</h3>
             <div className="flex space-x-4 space-x-reverse">
@@ -227,7 +206,6 @@ const ContactForm = () => {
           </div>
         </div>
 
-        {/* فرم تماس */}
         <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
           {submitStatus === "success" ? (
             <div className="text-center py-8">

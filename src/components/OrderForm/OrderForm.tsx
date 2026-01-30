@@ -6,7 +6,6 @@ import { useAuthContext } from "@/context/AuthContext";
 import { useShoppingCartContext } from "@/context/ShoppingCartContext";
 import { MapPin, Phone, Truck, CheckCircle, Loader2, Hash, Navigation } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
 import iranData from "../../../data/iran-cities.json";
 
 const OrderForm = ({ totalPrice, totalOldPrice }: { totalPrice: number; totalOldPrice: number }) => {
@@ -165,69 +164,4 @@ const OrderForm = ({ totalPrice, totalOldPrice }: { totalPrice: number; totalOld
     </div>
   );
 };
-
 export default OrderForm;
-// "use client";
-// import { useState } from "react";
-// import axios from "axios";
-// import toast from "react-hot-toast";
-
-// interface OrderFormProps {
-//   totalPrice: number;
-//   totalOldPrice: number;
-//   phone: string;
-// }
-
-// const OrderForm: React.FC<OrderFormProps> = ({ totalPrice, totalOldPrice, phone }) => {
-//   const [address, setAddress] = useState("");
-
-//   const handleSubmit = async (e: React.FormEvent) => {
-//     e.preventDefault();
-//     if (!address) {
-//       toast.error("لطفاً آدرس را وارد کنید.");
-//       return;
-//     }
-
-//     try {
-//       const res = await axios.post("https://apika.ir/apitak/orders/submit_order.php", {
-//         phone,
-//         address,
-//         total_price: totalPrice,
-//         total_old_price: totalOldPrice,
-//       });
-
-//       if (res.data.success) {
-//         toast.success("سفارش با موفقیت ثبت شد.");
-//       } else {
-//         toast.error("خطا در ثبت سفارش.");
-//       }
-//     } catch (err) {
-//       toast.error("خطا در ارتباط با سرور.");
-//     }
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md space-y-4">
-//       <h2 className="text-xl font-bold">تکمیل اطلاعات سفارش</h2>
-
-//       <div>
-//         <label className="block text-sm font-medium text-gray-700">آدرس:</label>
-//         <textarea
-//           className="w-full mt-1 p-2 border border-gray-300 rounded"
-//           rows={3}
-//           value={address}
-//           onChange={(e) => setAddress(e.target.value)}
-//         />
-//       </div>
-
-//       <button
-//         type="submit"
-//         className="bg-green-600 text-white px-5 py-2 rounded hover:bg-green-700 transition"
-//       >
-//         ثبت سفارش
-//       </button>
-//     </form>
-//   );
-// };
-
-// export default OrderForm;

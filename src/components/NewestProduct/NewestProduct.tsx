@@ -15,7 +15,6 @@ import 'swiper/css/navigation';
 
 const NewestProduct = () => {
   const [data, setData] = useState<IProduct[]>([]);
-
   useEffect(() => {
     axios('https://apitak.ir/apitak/get_products.php')
       .then((res) => {

@@ -1,11 +1,10 @@
 'use client';
-
 import { useShoppingCartContext } from '@/context/ShoppingCartContext';
 import { Minus, Plus, ShoppingCart } from 'lucide-react';
 
 interface IQuantity {
-  props: number; // موجودی
-  id_p: number;  // شناسه محصول
+  props: number; 
+  id_p: number;
 }
 
 const QuantitySelector: React.FC<IQuantity> = ({ props, id_p }) => {
@@ -51,7 +50,6 @@ const QuantitySelector: React.FC<IQuantity> = ({ props, id_p }) => {
           </button>
         </div>
       ) : (
-        // اگر در سبد نبود: دکمه افزودن به سبد
         <button
           onClick={() => handleIncreaseQty(id_p)}
           className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-base font-bold bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-sm"

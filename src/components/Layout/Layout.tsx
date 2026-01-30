@@ -11,5 +11,4 @@ const Layout :React.FC<IChildren> = ({children}) => {
         </div>
      );
 }
- 
 export default Layout ;

@@ -19,9 +19,14 @@ const AuthFlow = () => {
   const [showResendButton, setShowResendButton] = useState(false);
 
   const router = useRouter();
-  const { isLoggedIn, setIsLoggedIn, setPhoneNumber, setName: setContextName, setFamily: setContextFamily } = useAuthContext();
+  const { 
+    isLoggedIn, 
+    setIsLoggedIn, 
+    setPhoneNumber, 
+    setName: setContextName, 
+    setFamily: setContextFamily 
+  } = useAuthContext();
 
-  // انیمیشن‌های Framer Motion
   const variants = {
     enter: (direction: number) => ({ x: direction > 0 ? 100 : -100, opacity: 0 }),
     center: { x: 0, opacity: 1 },
@@ -42,6 +47,7 @@ const AuthFlow = () => {
     if (isLoggedIn) router.push("/UserPanel");
   }, [isLoggedIn, router]);
 
+  // ۱. ارسال کد تایید
   const handleSendOtp = async (isResend = false) => {
     if (phone.length < 11) { setError("شماره موبایل معتبر نیست."); return; }
     setLoading(true);
@@ -53,12 +59,14 @@ const AuthFlow = () => {
         body: new URLSearchParams({ phone }),
       });
       const data = await res.json();
-      if (data.otp) {
+      
+      // هماهنگ با status: 1 در PHP
+      if (data.status === 1 || data.otp) {
         if (!isResend) setStep(2);
         setTimer(120);
         setShowResendButton(false);
       } else {
-        setError(data.message || "خطایی رخ داد.");
+        setError(data.message || "خطا در ارسال کد.");
       }
     } catch (err) {
       setError("ارتباط با سرور برقرار نشد.");
@@ -67,7 +75,9 @@ const AuthFlow = () => {
     }
   };
 
+  // ۲. تایید کد و بررسی وضعیت کاربر
   const handleVerifyOtp = async () => {
+    if (otp.length < 6) return;
     setLoading(true);
     setError("");
     try {
@@ -77,14 +87,20 @@ const AuthFlow = () => {
         body: new URLSearchParams({ phone, code: otp }),
       });
       const data = await res.json();
+      
       if (data.status === "existing") {
         setPhoneNumber(phone);
+        // ست کردن اطلاعات کاربر از دیتابیس در Context
+        if (data.user) {
+          setContextName(data.user.name);
+          setContextFamily(data.user.family);
+        }
         setIsLoggedIn(true);
       } else if (data.status === "new") {
         setIsNewUser(true);
         setStep(3);
       } else {
-        setError("کد وارد شده صحیح نیست.");
+        setError(data.message || "کد وارد شده صحیح نیست.");
       }
     } catch (err) {
       setError("خطا در تایید کد.");
@@ -93,6 +109,7 @@ const AuthFlow = () => {
     }
   };
 
+  // ۳. ثبت‌نام کاربر جدید
   const handleRegister = async () => {
     if (!name || !family) { setError("لطفاً اطلاعات را کامل کنید."); return; }
     setLoading(true);
@@ -124,7 +141,7 @@ const AuthFlow = () => {
     <div className="min-h-[500px] flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white/80 backdrop-blur-2xl rounded-[2.5rem] shadow-[0_22px_70px_4px_rgba(0,0,0,0.1)] border border-white p-8 relative overflow-hidden">
         
-        {/* هدر هوشمند */}
+        {/* هدر */}
         <div className="text-center mb-8">
           <div className="inline-flex p-4 rounded-3xl bg-blue-50 text-blue-600 mb-4">
             {step === 1 && <Phone size={32} />}
@@ -196,7 +213,7 @@ const AuthFlow = () => {
                   ) : (
                     <span className="text-gray-400 font-medium">ارسال مجدد تا {timer} ثانیه دیگر</span>
                   )}
-                  <button onClick={() => setStep(1)} className="text-gray-400 hover:text-gray-600">ویرایش شماره</button>
+                  <button onClick={() => setStep(1)} className="text-gray-400 hover:text-gray-600 font-bold text-xs uppercase tracking-tighter">ویرایش شماره</button>
                 </div>
                 <button onClick={handleVerifyOtp} disabled={loading || otp.length < 6} className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-200 text-white p-4 rounded-2xl font-bold shadow-lg shadow-green-100 transition-all">
                   {loading ? <Loader2 className="animate-spin mx-auto" /> : "تایید و ادامه"}

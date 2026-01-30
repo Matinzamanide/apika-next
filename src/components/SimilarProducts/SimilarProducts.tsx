@@ -5,26 +5,20 @@ import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import ProductCard from "../ProductCard/ProductCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
 interface ICatName {
   catName: string;
 }
-
 const SimilarProducts: React.FC<ICatName> =  ({ catName }) => {
 const [data,setData]=useState<IProduct[]>([]);
-
-
 useEffect(()=>{
   axios('https://apitak.ir/apitak/get_products.php')
   .then((res)=>{
     setData(res.data);
   })
 },[])
-
   const filteredByCategory = data.filter((product) =>
     product.categories?.some((cat) => cat.toLowerCase().includes(catName.toLowerCase()))
   );
-
   if (filteredByCategory.length === 0) {
     return (
       <section className="py-10 bg-gray-50">
@@ -42,8 +36,6 @@ useEffect(()=>{
         <h3 className="text-2xl font-extrabold text-gray-800 mb-8  text-right">
           محصولات مشابه 
         </h3>
-
-        {/* Swiper اسلایدر */}
         <Swiper
           modules={[Navigation, Pagination, A11y, Autoplay]}
           spaceBetween={16}
@@ -69,5 +61,4 @@ useEffect(()=>{
     </section>
   );
 };
-
 export default SimilarProducts;
