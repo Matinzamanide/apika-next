@@ -1,108 +1,67 @@
-'use client';
-
 import { IProduct } from '@/Types/Types';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import ProductCard from '../ProductCard/ProductCard';
-import SectionHeader from '../SectionSeperator/SectionSeperator';
-import { GitPullRequest } from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation } from 'swiper/modules'; 
+export default async function NewestProduct() {
+  const res = await fetch('https://apitak.ir/apitak/get_products.php', {
+    next: { revalidate: 60 },
+  });
 
-import 'swiper/css';
-import 'swiper/css/navigation';
+  const json = await res.json();
 
-const NewestProduct = () => {
-  const [data, setData] = useState<IProduct[]>([]);
-  useEffect(() => {
-    axios('https://apitak.ir/apitak/get_products.php')
-      .then((res) => {
-        if (Array.isArray(res.data)) {
-          setData(res.data.slice(0, 8));
-        } else {
-          console.error('API response is not an array:', res.data);
-        }
-      })
-      .catch((err) => {
-        console.error('Error fetching products:', err);
-      });
-  }, []);
+  const products: IProduct[] = Array.isArray(json)
+    ? json.slice(0, 8)
+    : [];
+
+  if (products.length === 0) return null;
 
   return (
-    <div className="py-8">
-      <SectionHeader title="جدیدترین محصولات" icon={<GitPullRequest />} linkHref="/HouseholdPump" />
-
-      <div className="w-[95%] mx-auto mt-6 relative">
-        {data.length === 0 ? (
-          <div className="flex gap-4 overflow-x-hidden">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="bg-gray-200 rounded-3xl w-60 h-80 animate-pulse"></div>
-            ))}
-          </div>
-        ) : (
-          <Swiper
-            modules={[Autoplay, Navigation]}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            loop
-            speed={600}
-            navigation
-            breakpoints={{
-              0: { slidesPerView: 1.2, spaceBetween: 12 },
-              640: { slidesPerView: 2.5, spaceBetween: 16 },
-              768: { slidesPerView: 3, spaceBetween: 16 },
-              1024: { slidesPerView: 4, spaceBetween: 20 },
-            }}
-            className="pb-8"
+    <section className="py-10">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Header */}
+        <div className="mb-6 flex items-center justify-between">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-800">
+            جدیدترین محصولات
+          </h2>
+          <Link
+            href="/Productss"
+            className="text-sm font-medium text-blue-600 hover:text-blue-700 transition"
           >
-            {data.map((item, i) => (
-              <SwiperSlide key={i}>
-                <div className="bg-white rounded-3xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
-                  <ProductCard {...item} />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        )}
+            مشاهده همه →
+          </Link>
+        </div>
 
-        <style jsx global>{`
-          .swiper-button-prev,
-          .swiper-button-next {
-            background: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 9999px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            color: #222;
-            opacity: 0.9;
-            transition: all 0.3s ease;
-          }
-          .swiper-button-prev:hover,
-          .swiper-button-next:hover {
-            transform: scale(1.1);
-            opacity: 1;
-          }
-          .swiper-button-prev {
-            left: -18px;
-          }
-          .swiper-button-next {
-            right: -18px;
-          }
-          @media (max-width: 640px) {
-            .swiper-button-prev,
-            .swiper-button-next {
-              display: none;
-            }
-          }
-            .swiper-button-prev::after,
-           .swiper-button-next::after {
-             font-size: 14px;
-             font-weight: bold;
-           }
-        `}</style>
+        {/* Products */}
+        <div className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4">
+          {products.map((product) => (
+            <Link
+              key={product.id}
+              href={`/ProductPage/${product.id}`}
+              className="min-w-[220px] sm:min-w-[260px] snap-start group bg-white rounded-2xl border shadow-sm hover:shadow-lg transition-all duration-300"
+            >
+              <div className="relative w-full h-48 bg-gray-100 rounded-t-2xl overflow-hidden">
+                <Image
+                  src={product.images?.[0]}
+                  alt={product.title}
+                  fill
+                  sizes="(max-width: 768px) 220px, 260px"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+
+              <div className="p-4 space-y-2">
+                <h3 className="text-sm font-semibold text-gray-800 line-clamp-2">
+                  {product.title}
+                </h3>
+
+                <span className="text-blue-600 font-bold text-sm">
+                  {product.price?.toLocaleString()} تومان
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default NewestProduct;
+}

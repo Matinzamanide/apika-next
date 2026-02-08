@@ -1,90 +1,65 @@
-'use client'; 
-
-import Image from "next/image";
-import { motion } from "framer-motion";
 import Link from "next/link";
 
-const PumpBrands = () => {
-  const brandImages = [
-    {
-      src: "https://rahabsanat.ir/wp-content/uploads/2025/03/tavantek.webp",
-      alt: "برند توانتک",
-      link:"/ProductBrands/توان تک"
-    },
-    {
-      src: "https://rahabsanat.ir/wp-content/uploads/2025/03/bahar-1.webp",
-      alt: "برند بهار",
-      link:"/ProductBrands/بهار پمپ"
-    },
-    {
-      src: "https://rahabsanat.ir/wp-content/uploads/2025/03/navidmotor.webp",
-      alt: "برند نوید موتور",
-      link:"/ProductBrands/نود موتور"
-    },
-    {
-      src: "https://rahabsanat.ir/wp-content/uploads/2025/03/rayan.webp",
-      alt: "برند رایان",
-      link:"/ProductBrands/رایان"
-    },
-  ];
+const brands = [
+  { name: "موتوژن", slug: "موتوژن", color: "from-blue-500 to-blue-700" },
+  { name: "توان تک", slug: "توان تک", color: "from-emerald-500 to-emerald-700" },
+  { name: "بهار پمپ", slug: "بهار پمپ", color: "from-orange-500 to-orange-700" },
+  { name: "نوید موتور", slug: "نوید موتور", color: "from-purple-500 to-purple-700" },
+  { name: "رایان", slug: "رایان", color: "from-slate-600 to-slate-800" },
+];
 
-  const mainBrandImage = {
-    src: "https://rahabsanat.ir/wp-content/uploads/2025/03/motox.webp",
-    alt: "برند موتوژن",
-    link:"/ProductBrands/موتوژن" 
-  };
-
+export default function PumpBrands() {
   return (
-    <div className="container mx-auto px-4 py-10 mt-24">
-      <h2 className="text-3xl font-bold text-gray-800 text-center mb-10">
-        برندهای معتبر پمپ
-      </h2>
+    <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-7xl mx-auto px-4">
+        
+        {/* Header */}
+        <div className="mb-16 text-center">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4">
+            برندهای معتبر پمپ
+          </h2>
+          <p className="text-gray-500 max-w-xl mx-auto">
+            انتخابی از برندهای قابل اعتماد برای پروژه‌های صنعتی و خانگی
+          </p>
+        </div>
 
-      <div className="w-full mx-auto bg-gradient-to-b from-blue-50 to-white p-6 rounded-2xl shadow-xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-auto md:h-[400px] overflow-hidden">
-          <div className="relative w-full h-[250px] md:h-full rounded-lg overflow-hidden group flex items-center justify-center bg-gray-100"> {/* Added flex centering & bg-gray-100 for visibility of empty space */}
-            <Image
-              src={mainBrandImage.src}
-              alt={mainBrandImage.alt}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-contain transition-all duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-75" // Changed to object-contain
-            />
-            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <Link href={mainBrandImage.link} className="text-white text-xl font-bold p-3 bg-blue-600 rounded-md">
-                {mainBrandImage.alt}
-              </Link>
-            </div>
-          </div>
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          {brands.map((brand) => (
+            <Link
+              key={brand.slug}
+              href={`/ProductBrands/${brand.slug}`}
+              className="group relative rounded-3xl p-[1px] overflow-hidden"
+            >
+              {/* Border gradient */}
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${brand.color} opacity-30 group-hover:opacity-100 transition-opacity duration-500`}
+              />
 
-          <div className="grid grid-cols-2 gap-4">
-            {brandImages.map((brand, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative w-full h-[190px] rounded-lg overflow-hidden group flex items-center justify-center bg-gray-100" // Added flex centering & bg-gray-100
-              >
-                <Image
-                  src={brand.src}
-                  alt={brand.alt}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-contain transition-all duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-75" // Changed to object-contain
-                />
-                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Link href={brand.link} className="text-white text-lg font-bold p-2 bg-blue-600 rounded-md">
-                    {brand.alt}
-                  </Link>
+              {/* Card */}
+              <div className="relative bg-white rounded-3xl h-48 flex flex-col items-center justify-center gap-4 transition-transform duration-500 group-hover:-translate-y-2">
+                
+                {/* Monogram */}
+                <div
+                  className={`w-16 h-16 rounded-full bg-gradient-to-br ${brand.color} text-white flex items-center justify-center text-2xl font-black shadow-lg`}
+                >
+                  {brand.name[0]}
                 </div>
-              </motion.div>
-            ))}
-          </div>
+
+                {/* Brand name */}
+                <span className="text-lg font-bold text-gray-800 group-hover:tracking-widest transition-all duration-300">
+                  {brand.name}
+                </span>
+
+                {/* subtle hint */}
+                <span className="text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  مشاهده محصولات →
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-export default PumpBrands;
+}
