@@ -112,15 +112,11 @@ import HeroMotion from "./Hero.client";
 export default function Hero() {
   return (
     <section className="relative min-h-[95vh] flex items-center overflow-hidden bg-[#fdfeff] py-16 lg:py-0">
-      
-      {/* پس‌زمینه‌ها (CSS only) */}
-      <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-gradient-to-br from-blue-200/30 to-purple-200/20 rounded-full blur-[120px] -z-10" />
+            <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-gradient-to-br from-blue-200/30 to-purple-200/20 rounded-full blur-[120px] -z-10" />
       <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-gradient-to-tr from-cyan-100/40 to-blue-50/30 rounded-full blur-[100px] -z-10" />
 
       <div className="container mx-auto px-6 lg:px-16 relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
-
-          {/* متن Hero – سروری */}
           <div className="text-right order-2 lg:order-1">
             <h1 className="text-4xl lg:text-6xl font-[900] text-[#0f172a] leading-tight mb-8">
               جریان هوشمند
@@ -157,7 +153,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* فقط تصویر و افکت‌ها */}
           <HeroMotion />
         </div>
       </div>

@@ -2,7 +2,6 @@ import { Download, CheckCircle, Package, Tag } from 'lucide-react';
 import TabComponent from '@/components/TabCom/TabComponent';
 import Gallery from '@/components/Gallery/Gallery';
 import QuantitySelector from '@/components/QuantitySelector/QuantitySelector';
-import Link from 'next/link';
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
 import SimilarProducts from '@/components/SimilarProducts/SimilarProducts';
 
@@ -56,11 +55,11 @@ const DataLightPage = async (props: IProps) => {
     <div className="bg-gradient-to-br from-gray-50 via-blue-50 to-white min-h-screen text-gray-800 py-12 px-4 sm:px-6 lg:px-8">
       <Breadcrumb productName={data.title} category={data.categories[0]} link='HouseholdPump' />
       <div className="max-w-7xl mx-auto mb-8">
-        <Link href={`/Products/${data.id}/edit`} target="_blank">
+        {/* <Link href={`/Products/${data.id}/edit`} target="_blank">
           <button className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-8 py-2 rounded-xl font-semibold shadow-md hover:from-emerald-600 hover:to-emerald-700 transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2">
             ویرایش محصول
           </button>
-        </Link>
+        </Link> */}
       </div>
 
       <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-10 p-6 lg:p-10 transition-all duration-300 hover:shadow-3xl">

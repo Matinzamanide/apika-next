@@ -9,7 +9,7 @@ export interface IProduct {
     images: string[]; 
     categories: string[];
     brand:string
-    inventory: string;
+    inventory: string |number;
     specifications: Specification[];
     product_features: string[]
     catalog_url?: string; 
