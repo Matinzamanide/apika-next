@@ -46,12 +46,12 @@ interface CategoryItem {
 }
 
 const categories: CategoryItem[] = [
-  { title: 'ست کنترل', href: '/SetControl', src: 'https://rahabsanat.ir/wp-content/uploads/2025/03/control-set.webp' },
-  { title: 'پمپ آب خانگی', href: '/HouseholdPump', src: 'https://rahabsanat.ir/wp-content/uploads/2025/03/leo_pump-1.webp' },
-  { title: 'مکانیکال سیل', href: '/product-category/mechanical-seal/', src: 'https://rahabsanat.ir/wp-content/uploads/2025/03/mechanical_seal-1.webp' },
-  { title: 'منبع انبساط', href: '/ExpansionSource', src: 'https://rahabsanat.ir/wp-content/uploads/2025/03/enbesat-1.webp' },
+  { title: 'ست کنترل', href: '/SetControl', src: 'https://apitak.ir/images/controlset.webp' },
+  { title: 'پمپ آب خانگی', href: '/HouseholdPump', src: 'https://apitak.ir/images/household.webp' },
+  { title: 'مکانیکال سیل', href: '/product-category/mechanical-seal/', src: 'https://apitak.ir/images/mechanicalseal.webp' },
+  { title: 'منبع انبساط', href: '/ExpansionSource', src: 'https://apitak.ir/images/enbesat.webp' },
   { title: 'تیوپ', href: '/tiup', src: 'https://apitak.ir/images/tiup.png' },
-  { title: 'موتور کولر', href: '/Cooler', src: 'https://rahabsanat.ir/wp-content/uploads/2025/03/cooler_motor-1.webp' },
+  { title: 'موتور کولر', href: '/Cooler', src: 'https://apitak.ir/images/coolermotor.webp' },
   { title: 'پمپ کف کش', href: '/kafkesh-pump', src: 'https://apitak.ir/images/kafkesh1.png' },
   { title: 'پمپ کارواش', href: '/karvash-pump', src: 'https://apitak.ir/images/karvash1.png' },
   { title: 'موتور برق', href: '/bluer', src: 'https://apitak.ir/images/motorbargh.png' },
@@ -61,12 +61,18 @@ const categories: CategoryItem[] = [
 const MainCategory = () => {
   return (
     <section className="container mx-auto px-4 py-10 my-10 mb-20 md:py-16" dir="rtl">
-      <h2 className="text-3xl md:text-4xl font-extrabold text-center text-blue-900 mb-10">
-        <span className="border-b-4 border-orange-500 pb-1">
-          دسته‌بندی‌های اصلی
-        </span>{' '}
-        محصولات
-      </h2>
+       <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
+          <div className="max-w-2xl">
+            <div className="h-1 w-14 bg-slate-900 mb-6" />
+            <h2 className="text-4xl md:text-6xl font-light text-slate-900 leading-tight tracking-tight">
+              تجلی <span className="font-black text-blue-600">قدرت</span> <br />
+              در مهندسی آب و صنعت
+            </h2>
+          </div>
+          <p className="text-slate-400 font-medium max-w-[200px] text-sm leading-6 border-r-2 border-slate-100 pr-4">
+            مجموعه‌ای از برترین برندهای جهانی برای پروژه‌های هوشمند شما.
+          </p>
+        </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
         {categories.map((cat) => {
@@ -83,7 +89,7 @@ const MainCategory = () => {
                 <Icon size={96} className={style.iconColor} />
               </div>
 
-              <div className="w-24 h-24 md:w-32 md:h-32 mb-4 relative z-10">
+              <div className="w-24 h-24 md:w-32 md:h-32 mb-4 absolute  top-15 lg:top-10 z-10">
                 <Image
                   src={cat.src}
                   alt={cat.title}
@@ -114,74 +120,74 @@ export default MainCategory;
 // import PremiumCategoryClient from "./PremiumCategory.client";
 
 // const categories = [
-  // {
-  //   title: "پمپ آب خانگی",
-  //   href: "/HouseholdPump",
-  //   src: "https://rahabsanat.ir/wp-content/uploads/2025/03/leo_pump-1.webp",
-  // },
-  // {
-  //   title: "مکانیکال سیل",
-  //   enTitle: "APIKA",
-  //   href: "/product-category/mechanical-seal/",
-  //   src: "https://rahabsanat.ir/wp-content/uploads/2025/03/mechanical_seal-1.webp",
-  //   accent: "bg-purple-500",
-  // },
-  // {
-  //   title: "منبع انبساط",
-  //   enTitle: "Expansion Tank",
-  //   href: "/ExpansionSource",
-  //   src: "https://rahabsanat.ir/wp-content/uploads/2025/03/enbesat-1.webp",
-  //   accent: "bg-emerald-500",
-  // },
-  // {
-  //   title: "تیوپ",
-  //   enTitle: "Expansion Tank",
-  //   href: "/tiup",
-  //   src: "https://apitak.ir/images/tiup.png",
-  //   accent: "bg-emerald-500",
-  // },
-  // {
-  //   title: "موتور کولر",
-  //   enTitle: "Cooler Motor",
-  //   href: "/Cooler",
-  //   src: "https://rahabsanat.ir/wp-content/uploads/2025/03/cooler_motor-1.webp",
-  //   accent: "bg-orange-500",
-  // },
-  // {
-  //   title: "ست کنترل",
-  //   enTitle: "Control Set",
-  //   href: "/SetControl",
-  //   src: "https://rahabsanat.ir/wp-content/uploads/2025/03/control-set.webp",
-  //   accent: "bg-slate-700",
-  // },
-  // {
-  //   title: "پمپ کف کش",
-  //   enTitle: "Control Set",
-  //   href: "/kafkesh-pump",
-  //   src: "https://apitak.ir/images/kafkesh1.png",
-  //   accent: "bg-slate-700",
-  // },
-  // {
-  //   title: "پمپ کارواش ",
-  //   enTitle: "Control Set",
-  //   href: "/karvash-pump",
-  //   src: "https://apitak.ir/images/karvash1.png",
-  //   accent: "bg-slate-700",
-  // },
-  // {
-  //   title: "موتور برق",
-  //   enTitle: "Control Set",
-  //   href: "/bluer",
-  //   src: "https://apitak.ir/images/motorbargh.png",
-  //   accent: "bg-slate-700",
-  // },
-  // {
-  //   title: "پمپ دنده‌ای",
-  //   enTitle: "Control Set",
-  //   href: "/bluer",
-  //   src: "https://apitak.ir/images/gear-pump.png",
-  //   accent: "bg-slate-700",
-  // },
+//   {
+//     title: "پمپ آب خانگی",
+//     href: "/HouseholdPump",
+//     src: "https://rahabsanat.ir/wp-content/uploads/2025/03/leo_pump-1.webp",
+//   },
+//   {
+//     title: "مکانیکال سیل",
+//     enTitle: "APIKA",
+//     href: "/product-category/mechanical-seal/",
+//     src: "https://rahabsanat.ir/wp-content/uploads/2025/03/mechanical_seal-1.webp",
+//     accent: "bg-purple-500",
+//   },
+//   {
+//     title: "منبع انبساط",
+//     enTitle: "Expansion Tank",
+//     href: "/ExpansionSource",
+//     src: "https://rahabsanat.ir/wp-content/uploads/2025/03/enbesat-1.webp",
+//     accent: "bg-emerald-500",
+//   },
+//   {
+//     title: "تیوپ",
+//     enTitle: "Expansion Tank",
+//     href: "/tiup",
+//     src: "https://apitak.ir/images/tiup.png",
+//     accent: "bg-emerald-500",
+//   },
+//   {
+//     title: "موتور کولر",
+//     enTitle: "Cooler Motor",
+//     href: "/Cooler",
+//     src: "https://rahabsanat.ir/wp-content/uploads/2025/03/cooler_motor-1.webp",
+//     accent: "bg-orange-500",
+//   },
+//   {
+//     title: "ست کنترل",
+//     enTitle: "Control Set",
+//     href: "/SetControl",
+//     src: "https://rahabsanat.ir/wp-content/uploads/2025/03/control-set.webp",
+//     accent: "bg-slate-700",
+//   },
+//   {
+//     title: "پمپ کف کش",
+//     enTitle: "Control Set",
+//     href: "/kafkesh-pump",
+//     src: "https://apitak.ir/images/kafkesh1.png",
+//     accent: "bg-slate-700",
+//   },
+//   {
+//     title: "پمپ کارواش ",
+//     enTitle: "Control Set",
+//     href: "/karvash-pump",
+//     src: "https://apitak.ir/images/karvash1.png",
+//     accent: "bg-slate-700",
+//   },
+//   {
+//     title: "موتور برق",
+//     enTitle: "Control Set",
+//     href: "/bluer",
+//     src: "https://apitak.ir/images/motorbargh.png",
+//     accent: "bg-slate-700",
+//   },
+//   {
+//     title: "پمپ دنده‌ای",
+//     enTitle: "Control Set",
+//     href: "/bluer",
+//     src: "https://apitak.ir/images/gear-pump.png",
+//     accent: "bg-slate-700",
+//   },
 // ];
 
 // export default function PremiumCategory() {

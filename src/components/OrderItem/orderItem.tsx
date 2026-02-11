@@ -1,4 +1,5 @@
 "use client";
+import { IProduct } from "@/Types/Types";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -39,12 +40,18 @@ const OrderItem: React.FC<IOrderItem> = ({ id, qty }) => {
   const discountPercent = hasDiscount
     ? Math.round(100 - (data.price / data.before_discount_price) * 100)
     : 0;
+    const finalPrice = Number(data?.price) || 0;
 
   return (
     <Link href={`/ProductPage/${data.title}`}>
      <div className="bg-white flex px-7 py-10 rounded-lg shadow-lg ">
        <div className="right">
-         <Image width={150} height={150} src={data.images[0]} alt="hello" />
+       <Image
+  width={150}
+  height={150}
+  src={data?.images?.[0] || "/placeholder.jpg"}
+  alt={data?.title || "product"}
+/>
        </div>
        <div className="left">
          <p className="text-lg font-semibold">{data.title}</p>
@@ -55,7 +62,7 @@ const OrderItem: React.FC<IOrderItem> = ({ id, qty }) => {
 
                  <p className="text-green-700">
                      <span>قیمت تکی :</span>
-                     <span>{data.price.toLocaleString()} تومان</span>
+                     <span>{finalPrice.toLocaleString()} تومان</span>
                  </p>
 
 

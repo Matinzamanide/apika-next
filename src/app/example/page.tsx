@@ -15,6 +15,7 @@ const Example = () => {
             <NewProductForm/>
             {/* <NewestProduct/> */}
             <LoadingApika/>
+            
            
         </div>
      );
