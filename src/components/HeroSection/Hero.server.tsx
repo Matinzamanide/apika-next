@@ -119,7 +119,7 @@ export default function Hero() {
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div className="text-right order-2 lg:order-1">
             <h1 className="text-4xl lg:text-6xl font-[900] text-[#0f172a] leading-tight mb-8">
-              جریان هوشمند
+             <span className="text-blue-700">آپیکا</span> جریان هوشمند 
               <span className="block bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
                 قدرت و پایداری
               </span>

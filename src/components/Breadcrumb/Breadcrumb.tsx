@@ -16,7 +16,7 @@ const Breadcrumb = ({ productName, category, link }: BreadcrumbProps) => {
     'بلوئر': 'bluer',
     'پمپ لجن کش': 'SludgePump',
     'الکترو پمپ': 'ElectroPump',
-    'ست کنترل': 'SetControl',
+    'ست کنترل پمپ': 'SetControl',
     'پمپ آب خانگی': 'HouseholdPump',
     'منبع انبساط': 'ExpansionSource',
     'تیوپ': 'tube',
