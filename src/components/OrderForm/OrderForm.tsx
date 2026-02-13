@@ -7,10 +7,12 @@ import { useShoppingCartContext } from "@/context/ShoppingCartContext";
 import { MapPin, Phone, Truck, CheckCircle, Loader2, Hash, Navigation } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import iranData from "../../../data/iran-cities.json";
+import { useRouter } from "next/router";
 
 const OrderForm = ({ totalPrice, totalOldPrice }: { totalPrice: number; totalOldPrice: number }) => {
   const { phoneNumber } = useAuthContext();
   const { cartItems } = useShoppingCartContext();
+  const router=useRouter();
 
   const [formData, setFormData] = useState({
     province: "",
@@ -65,6 +67,7 @@ const OrderForm = ({ totalPrice, totalOldPrice }: { totalPrice: number; totalOld
     } finally {
       setLoading(false);
     }
+    router.push('/UserPanel')
   };
 
   const inputStyle = "w-full bg-gray-50 border border-gray-200 rounded-2xl p-4 outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 focus:bg-white transition-all text-sm font-medium";

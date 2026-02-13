@@ -212,6 +212,10 @@ export default function Header() {
               className="md:hidden p-2.5 rounded-xl bg-white/10 text-blue-950 hover:bg-white/20 backdrop-blur-sm border border-cyan-400/20 transition-all duration-300"
               aria-label="باز کردن منو"
             >
+              {
+                cartTotalQty>0 && <span className='fixed -top-2 -right-2 bg-red-700 text-white w-5 h-5 rounded-4xl'>{cartTotalQty}</span>
+              }
+              
               <Menu size={24} />
             </button>
           </div>

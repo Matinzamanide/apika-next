@@ -9,7 +9,7 @@ interface ExpansionSourceProps {
   }>;
 }
 
-const SetControl = async (props: ExpansionSourceProps) => {
+const HotOil = async (props: ExpansionSourceProps) => {
   const searchParams = await props.searchParams;
   const selectedBrand = searchParams.brand || "all";
   const sortOrder = searchParams.sort || "default";
@@ -36,7 +36,7 @@ const SetControl = async (props: ExpansionSourceProps) => {
   }
 
   let filteredByCategory = allProducts.filter((product) =>
-    product.categories?.some((cat) => cat.includes("ست کنترل پمپ"))
+    product.categories?.some((cat) => cat.includes("پمپ روغن داغ"))
   );
 
   const availableBrands = Array.from(
@@ -58,7 +58,7 @@ const SetControl = async (props: ExpansionSourceProps) => {
   return (
     <div className="max-w-[95%] mx-auto py-10 px-4 sm:px-6 lg:px-8" dir="rtl">
       <h2 className="text-3xl font-extrabold text-gray-800 text-center mb-8">
-        ست کنترل پمپ
+         انواع پمپ روغن داغ
       </h2>
 
       <div className="flex flex-col md:grid md:grid-cols-4 md:gap-6">
@@ -82,4 +82,4 @@ const SetControl = async (props: ExpansionSourceProps) => {
   );
 };
 
-export default SetControl;
+export default HotOil;

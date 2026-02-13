@@ -21,22 +21,39 @@ const iconMapping = {
   'پمپ کارواش': Droplets,
   'موتور برق': ZapIcon,
   'پمپ دنده‌ای': Droplets,
+  'بلوئر': Droplets,
+  'روغن داغ': Droplets,
 } as const;
+
+// const categoryMapping = {
+//   'ست کنترل': { color: 'from-slate-700 to-slate-500', iconColor: 'text-slate-200' },
+//   'منبع انبساط': { color: 'from-sky-600 to-blue-500', iconColor: 'text-sky-200' },
+//   'پمپ آب خانگی': { color: 'from-emerald-600 to-green-500', iconColor: 'text-emerald-200' },
+//   'مکانیکال سیل': { color: 'from-rose-600 to-red-500', iconColor: 'text-rose-200' },
+//   'تیوپ': { color: 'from-amber-600 to-yellow-500', iconColor: 'text-amber-200' },
+//   'موتور کولر': { color: 'from-teal-600 to-cyan-400', iconColor: 'text-teal-200' },
+//   'پمپ کف کش': { color: 'from-violet-600 to-purple-500', iconColor: 'text-violet-200' },
+//   'پمپ کارواش': { color: 'from-red-600 to-orange-500', iconColor: 'text-red-200' },
+//   'موتور برق': { color: 'from-zinc-700 to-zinc-500', iconColor: 'text-zinc-200' },
+//   'پمپ دنده‌ای': { color: 'from-cyan-700 to-blue-600', iconColor: 'text-cyan-200' },
+//   'بلوئر': { color: 'from-cyan-700 to-blue-600', iconColor: 'text-cyan-200' },
+//   'روغن داغ': { color: 'from-cyan-700 to-blue-600', iconColor: 'text-cyan-200' },
+// } as const;
 
 const categoryMapping = {
-  'ست کنترل': { color: 'from-slate-700 to-slate-500', iconColor: 'text-slate-200' },
-  'منبع انبساط': { color: 'from-sky-600 to-blue-500', iconColor: 'text-sky-200' },
-  'پمپ آب خانگی': { color: 'from-emerald-600 to-green-500', iconColor: 'text-emerald-200' },
-  'مکانیکال سیل': { color: 'from-rose-600 to-red-500', iconColor: 'text-rose-200' },
-  'تیوپ': { color: 'from-amber-600 to-yellow-500', iconColor: 'text-amber-200' },
-  'موتور کولر': { color: 'from-teal-600 to-cyan-400', iconColor: 'text-teal-200' },
-  'پمپ کف کش': { color: 'from-violet-600 to-purple-500', iconColor: 'text-violet-200' },
-  'پمپ کارواش': { color: 'from-red-600 to-orange-500', iconColor: 'text-red-200' },
-  'موتور برق': { color: 'from-zinc-700 to-zinc-500', iconColor: 'text-zinc-200' },
-  'پمپ دنده‌ای': { color: 'from-cyan-700 to-blue-600', iconColor: 'text-cyan-200' },
+  'ست کنترل': { color: 'from-slate-800 to-slate-600', iconColor: 'text-slate-300' },
+  'منبع انبساط': { color: 'from-blue-700 to-indigo-500', iconColor: 'text-blue-200' },
+  'پمپ آب خانگی': { color: 'from-emerald-700 to-teal-500', iconColor: 'text-emerald-200' },
+  'مکانیکال سیل': { color: 'from-orange-600 to-amber-500', iconColor: 'text-orange-100' },
+  'تیوپ': { color: 'from-rose-700 to-pink-600', iconColor: 'text-rose-200' },
+  'موتور کولر': { color: 'from-cyan-600 to-sky-500', iconColor: 'text-cyan-100' },
+  'پمپ کف کش': { color: 'from-violet-700 to-purple-600', iconColor: 'text-violet-200' },
+  'پمپ کارواش': { color: 'from-red-700 to-rose-600', iconColor: 'text-red-200' },
+  'موتور برق': { color: 'from-zinc-800 to-stone-600', iconColor: 'text-zinc-300' },
+  'پمپ دنده‌ای': { color: 'from-amber-700 to-yellow-600', iconColor: 'text-amber-200' },
+  'بلوئر': { color: 'from-indigo-800 to-blue-700', iconColor: 'text-indigo-200' },
+  'روغن داغ': { color: 'from-orange-900 to-red-900', iconColor: 'text-orange-200' },
 } as const;
-
-
 type CategoryTitle = keyof typeof categoryMapping;
 
 interface CategoryItem {
@@ -48,14 +65,16 @@ interface CategoryItem {
 const categories: CategoryItem[] = [
   { title: 'ست کنترل', href: '/SetControl', src: 'https://apitak.ir/images/controlset.webp' },
   { title: 'پمپ آب خانگی', href: '/HouseholdPump', src: 'https://apitak.ir/images/household.webp' },
-  { title: 'مکانیکال سیل', href: '/product-category/mechanical-seal/', src: 'https://apitak.ir/images/mechanicalseal.webp' },
+  { title: 'مکانیکال سیل', href: '/mechanical-seal/', src: 'https://apitak.ir/images/mechanicalseal.webp' },
   { title: 'منبع انبساط', href: '/ExpansionSource', src: 'https://apitak.ir/images/enbesat.webp' },
-  { title: 'تیوپ', href: '/tiup', src: 'https://apitak.ir/images/tiup.png' },
+  { title: 'تیوپ', href: '/tube', src: 'https://apitak.ir/apitak/uploads/file_698e5a58e4405_1770936920.webp' },
   { title: 'موتور کولر', href: '/Cooler', src: 'https://apitak.ir/images/coolermotor.webp' },
   { title: 'پمپ کف کش', href: '/kafkesh-pump', src: 'https://apitak.ir/images/kafkesh1.png' },
-  { title: 'پمپ کارواش', href: '/karvash-pump', src: 'https://apitak.ir/images/karvash1.png' },
-  { title: 'موتور برق', href: '/bluer', src: 'https://apitak.ir/images/motorbargh.png' },
-  { title: 'پمپ دنده‌ای', href: '/bluer', src: 'https://apitak.ir/images/gear-pump.png' },
+  { title: 'پمپ کارواش', href: '/karvash-pump', src: 'https://apitak.ir/apitak/uploads/file_698e5ddc7ab33_1770937820.webp' },
+  { title: 'موتور برق', href: '/motor-bargh', src: 'https://apitak.ir/images/motorbargh.png' },
+  { title: 'پمپ دنده‌ای', href: '/gear-pump', src: 'https://apitak.ir/images/gear-pump.png' },
+  { title: 'بلوئر', href: '/bluer', src: 'https://apitak.ir/images/bluer1.png' },
+  { title: 'روغن داغ', href: '/hot-oil', src: 'https://apitak.ir/images/hot-oil1.png' },
 ];
 
 const MainCategory = () => {

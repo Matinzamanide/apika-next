@@ -24,9 +24,6 @@ const ProductCardClient = ({
   price,
   before_discount_price,
   images,
-  inventory,
-  brand,
-  categories,
   discountPercentage,
   isAvailable,
   safeSlug,
@@ -113,8 +110,13 @@ const ProductCardClient = ({
                   </span>
                 )}
                 <div className="flex items-center gap-1">
-                  <span className="text-2xl font-black text-slate-900 tracking-tighter">{price.toLocaleString()}</span>
-                  <span className="text-[10px] font-bold text-slate-400">تومان</span>
+                  {
+                    price ==0 ? <p className="text-yellow-600 bg-yellow-100 px-3 py-1 rounded">استعلام قیمت</p> : <div>
+<span className="text-2xl font-black text-slate-900 tracking-tighter">{price.toLocaleString()}</span>
+<span className="text-[10px] font-bold text-slate-400">تومان</span>
+                    </div>
+                  }
+                  
                 </div>
               </div>
 

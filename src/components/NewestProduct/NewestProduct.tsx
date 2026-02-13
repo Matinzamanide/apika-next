@@ -36,7 +36,7 @@ export default async function NewestProduct() {
           {products.map((product) => (
             <Link
               key={product.id}
-              href={`/ProductPage/${product.id}`}
+              href={`/ProductPage/${product.title}`}
               className="min-w-[220px] sm:min-w-[260px] snap-start group bg-white rounded-2xl  shadow-sm hover:shadow-lg transition-all duration-300"
             >
               <div className="relative w-full h-48 bg-gray-100 rounded-t-2xl overflow-hidden">
