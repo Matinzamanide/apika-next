@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthContext } from "@/context/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,7 +10,7 @@ const AuthFlow = () => {
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
-  const [isNewUser, setIsNewUser] = useState(false);
+  const [, setIsNewUser] = useState(false);
   const [name, setName] = useState("");
   const [family, setFamily] = useState("");
   const [loading, setLoading] = useState(false);

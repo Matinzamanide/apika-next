@@ -7,7 +7,7 @@ import { useShoppingCartContext } from "@/context/ShoppingCartContext";
 import { MapPin, Phone, Truck, CheckCircle, Loader2, Hash, Navigation } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import iranData from "../../../data/iran-cities.json";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const OrderForm = ({ totalPrice, totalOldPrice }: { totalPrice: number; totalOldPrice: number }) => {
   const { phoneNumber } = useAuthContext();
