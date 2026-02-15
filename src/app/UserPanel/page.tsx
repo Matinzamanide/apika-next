@@ -188,7 +188,7 @@ const ProfileStat = ({ icon, label, value }: any) => (
 const OrderCard = ({ order, index, onPay }: { order: IOrder, index: number, onPay: () => void }) => {
   let products = [];
   try { products = JSON.parse(order.products); } catch (e) { products = []; }
-  const isPaid = order.payment_status === "پرداخت شده" || order.payment_status.includes("موفق");
+  const isPaid = order.payment_status === "paid" || order.payment_status.includes("موفق");
 
   return (
     <motion.div
@@ -215,7 +215,9 @@ const OrderCard = ({ order, index, onPay }: { order: IOrder, index: number, onPa
           <div className={`px-3 lg:px-5 py-1.5 lg:py-2 rounded-xl lg:rounded-2xl text-[10px] lg:text-[11px] font-black border ${
             isPaid ? "bg-emerald-50 text-emerald-600 border-emerald-100" : "bg-amber-50 text-amber-600 border-amber-100"
           }`}>
-            {order.payment_status}
+            {
+              order.payment_status==="paid"?(<p>پرداخت شده</p>) : <p>در انتظار پرداخت</p>
+            }
           </div>
         </div>
 

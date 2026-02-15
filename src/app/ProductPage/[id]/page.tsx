@@ -173,7 +173,7 @@
 // };
 
 // export default DataLightPage;
-import { Download, CheckCircle, Package, Tag } from 'lucide-react';
+import { Package, Tag } from 'lucide-react';
 import TabComponent from '@/components/TabCom/TabComponent';
 import Gallery from '@/components/Gallery/Gallery';
 import QuantitySelector from '@/components/QuantitySelector/QuantitySelector';
