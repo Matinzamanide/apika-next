@@ -182,7 +182,7 @@ import SimilarProducts from '@/components/SimilarProducts/SimilarProducts';
 import { Metadata } from 'next';
 
 interface IProps {
-  params: Promise<{ id: string }>; // ✅ چون Next 15 هست
+  params: Promise<{ id: string }>;
 }
 
 /* =========================
@@ -210,37 +210,37 @@ export async function generateMetadata(
   props: IProps
 ): Promise<Metadata> {
 
-  const { id } = await props.params; // ✅ مهم
-
+  const { id } = await props.params;
   const data = await getProduct(id);
 
   if (!data) return {};
 
-  const isInStock = Number(data.inventory) > 0;
+  const inventory = parseInt(data.inventory ?? "0", 10);
+  const isInStock = inventory > 0;
 
   return {
     title: data.title,
     openGraph: {
+      title: data.title,
       images: [data.images?.[0] || ''],
     },
     other: {
       product_id: String(data.id),
       product_name: data.title,
-      product_price: String(data.price),
-      product_old_price: String(data.before_discount_price || ''),
+      product_price: String(data.price ?? 0),
+      product_old_price: String(data.before_discount_price ?? ''),
       availability: isInStock ? 'instock' : 'outofstock',
-      guarantee: data.guarantee || '',
+      'product:availability': isInStock ? 'instock' : 'outofstock',
     },
   };
 }
 
 /* =========================
-   صفحه محصول (UI همون قبلی)
+   صفحه محصول
 ========================= */
 const DataLightPage = async (props: IProps) => {
 
-  const { id } = await props.params; // ✅ مهم
-
+  const { id } = await props.params;
   const data = await getProduct(id);
 
   if (!data) {
@@ -253,7 +253,11 @@ const DataLightPage = async (props: IProps) => {
     );
   }
 
-  const hasDiscount = data.price < data.before_discount_price;
+  const inventory = parseInt(data.inventory ?? "0", 10);
+  const isInStock = inventory > 0;
+
+  const hasDiscount =
+    Number(data.price) < Number(data.before_discount_price);
 
   const discountPercentage = hasDiscount
     ? Math.round(
@@ -262,12 +266,10 @@ const DataLightPage = async (props: IProps) => {
       )
     : 0;
 
-  const isInStock = Number(data.inventory) > 0;
-
   const stockMessage = isInStock
-    ? Number(data.inventory) > 5
+    ? inventory > 5
       ? 'موجود در انبار'
-      : `تنها ${data.inventory} عدد باقی مانده!`
+      : `تنها ${inventory} عدد باقی مانده!`
     : 'ناموجود';
 
   const formatPrice = (price: number) =>
@@ -275,10 +277,16 @@ const DataLightPage = async (props: IProps) => {
 
   return (
     <div className="bg-gradient-to-br from-gray-50 via-blue-50 to-white min-h-screen text-gray-800 py-12 px-4 sm:px-6 lg:px-8">
-      <Breadcrumb productName={data.title} category={data.categories[0]} link={data.categories[0]} />
+      
+      <Breadcrumb 
+        productName={data.title} 
+        category={data.categories?.[0]} 
+        link={data.categories?.[0]} 
+      />
 
       <div className="max-w-7xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-10 p-6 lg:p-10">
 
+        {/* گالری */}
         <div>
           {data.images?.length > 0 ? (
             <Gallery GalleryProps={{ images: data.images, title: data.title }} />
@@ -289,15 +297,24 @@ const DataLightPage = async (props: IProps) => {
           )}
         </div>
 
+        {/* اطلاعات محصول */}
         <div className="flex flex-col gap-6 lg:gap-8">
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
             {data.title}
           </h1>
 
+          {/* 🔥 متن SSR مخصوص ترب (خیلی مهم) */}
+          <div style={{ display: "none" }}>
+            وضعیت موجودی: {isInStock ? "موجود" : "ناموجود"}
+          </div>
+
+          {/* قیمت */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
             <span className="text-3xl sm:text-4xl font-bold text-green-700">
-              {data.price !== 0 ? formatPrice(Number(data.price)) : 'تماس بگیرید'}
+              {Number(data.price) > 0
+                ? formatPrice(Number(data.price))
+                : 'تماس بگیرید'}
             </span>
 
             {hasDiscount && (
@@ -312,17 +329,19 @@ const DataLightPage = async (props: IProps) => {
             )}
           </div>
 
-          {data.price !== 0 && (
-            <div className={`flex items-center gap-2 px-4 py-2 rounded-xl ${
+          {/* وضعیت موجودی نمایشی برای کاربر */}
+          <div
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl ${
               isInStock
                 ? 'bg-green-50 text-green-700 border border-green-200'
                 : 'bg-red-50 text-red-700 border border-red-200'
-            }`}>
-              <Package size={18} />
-              <span className="font-semibold">{stockMessage}</span>
-            </div>
-          )}
+            }`}
+          >
+            <Package size={18} />
+            <span className="font-semibold">{stockMessage}</span>
+          </div>
 
+          {/* برند */}
           <div className="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-xl border border-gray-200">
             <Tag size={18} className="text-gray-600" />
             <span className="font-semibold text-gray-700">برند:</span>
@@ -330,7 +349,7 @@ const DataLightPage = async (props: IProps) => {
           </div>
 
           <QuantitySelector
-            props={Number(data.inventory)}
+            props={inventory}
             id_p={data.id}
             price={data.price}
           />
