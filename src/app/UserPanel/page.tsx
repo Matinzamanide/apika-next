@@ -115,7 +115,7 @@ const UserPanel = () => {
 
               <div className="mt-8 lg:mt-10 space-y-2 lg:space-y-3">
                 <ProfileStat icon={<Phone size={18}/>} label="شماره تماس" value={phoneNumber} />
-                <ProfileStat icon={<MapPin size={18}/>} label="استان" value="اصفهان" />
+                {/* <ProfileStat icon={<MapPin size={18}/>} label="استان" value={userData?.city} /> */}
               </div>
 
               <button

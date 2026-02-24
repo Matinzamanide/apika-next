@@ -195,7 +195,7 @@ export default function Header() {
                 href="/UserPanel"
                   className="flex items-center gap-2 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 text-white px-5 py-2.5 rounded-xl shadow-lg hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-300 backdrop-blur-sm border border-cyan-400/30"
                 >
-                  <User size={20} /> {name} {family}
+                  <User size={20} /> {name} {family} (پنل کاربری)
                 </Link>
               ) : (
                 <Link
@@ -293,7 +293,7 @@ export default function Header() {
               onClick={() => setSidebarOpen(false)}
               className="flex items-center gap-3 p-4 mt-6 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-600 text-white rounded-2xl shadow-lg hover:shadow-cyan-500/40 transform hover:scale-105 transition-all duration-300 backdrop-blur-sm border border-cyan-400/30"
             >
-              <User size={22} /> {name} {family}
+              <User size={22} /> {name} {family} (پنل کاربری)
             </Link>
           ) : (
             <Link

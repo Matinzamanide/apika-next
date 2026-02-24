@@ -20,7 +20,7 @@ const OrderForm = ({ totalPrice, totalOldPrice }: { totalPrice: number; totalOld
     postalCode: "",
     address: "",
     phone: "",
-    shippingMethod: "پست",
+    shippingMethod: "تیپاکس",
   });
 
   const [message, setMessage] = useState({ text: "", type: "" });
@@ -134,7 +134,7 @@ const OrderForm = ({ totalPrice, totalOldPrice }: { totalPrice: number; totalOld
             <div className="space-y-4">
               <label className={labelStyle}><Truck size={14}/> روش ارسال</label>
               <div className="grid grid-cols-2 gap-3">
-                {["پست", "تیپاکس"].map((method) => (
+                {["اتوبوس", "تیپاکس","باربری"].map((method) => (
                   <label key={method} className={`relative flex items-center justify-center p-4 rounded-2xl border-2 cursor-pointer transition-all ${formData.shippingMethod === method ? "border-blue-600 bg-blue-50 text-blue-700 shadow-sm" : "border-gray-100 bg-gray-50/50 hover:bg-gray-100"}`}>
                     <input type="radio" name="shippingMethod" value={method} checked={formData.shippingMethod === method} onChange={handleChange} className="hidden" />
                     <span className="text-sm font-bold">{method}</span>
